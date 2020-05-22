@@ -218,7 +218,7 @@ public class Main_Form extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(navBar, javax.swing.GroupLayout.DEFAULT_SIZE, 2174, Short.MAX_VALUE)
+            .addComponent(navBar, javax.swing.GroupLayout.PREFERRED_SIZE, 2174, Short.MAX_VALUE)
             .addComponent(main_content, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
