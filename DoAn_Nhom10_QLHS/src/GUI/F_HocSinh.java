@@ -44,7 +44,7 @@ public class F_HocSinh extends javax.swing.JFrame {
     public void showdata() {
         HocSinhDAL hs = new HocSinhDAL();
         ArrayList<HocSinhDTO> list = hs.BindTable();
-        String[] columnName = {"idtablehocsinh", "tenhocsinh", "gioitinh", "ngaysinh", "quequan", "diachi", "idtablelop", "img"};
+        String[] columnName = {"idtablehocsinh", "tenhocsinh", "gioitinh", "ngaysinh", "quequan", "diachi", "idtablelop"};
         Object[][] rows = new Object[list.size()][8];
         for (int i = 0; i < list.size(); i++) {
             rows[i][0] = list.get(i).getIdtablehocsinh();
@@ -54,18 +54,18 @@ public class F_HocSinh extends javax.swing.JFrame {
             rows[i][4] = list.get(i).getQuequan();
             rows[i][5] = list.get(i).getDiachi();
             rows[i][6] = list.get(i).getIdtablelop();
-            if (list.get(i).getImg() != null) {
-                ImageIcon image = new ImageIcon(new ImageIcon(list.get(i).getImg()).getImage()
-                        .getScaledInstance(120, 90, Image.SCALE_SMOOTH));
-                rows[i][7] = image;
-            } else {
-                rows[i][7] = null;
-            }
+//            if (list.get(i).getImg() != null) {
+//                ImageIcon image = new ImageIcon(new ImageIcon(list.get(i).getImg()).getImage()
+//                        .getScaledInstance(120, 90, Image.SCALE_SMOOTH));
+//                rows[i][7] = image;
+//            } else {
+//                rows[i][7] = null;
+//            }
         }
         TheModel2 model = new TheModel2(rows, columnName);
         jTable1.setModel(model);
         jTable1.setRowHeight(90);
-        jTable1.getColumnModel().getColumn(7).setPreferredWidth(120);
+       // jTable1.getColumnModel().getColumn(7).setPreferredWidth(120);
     }
 
     /**
@@ -112,7 +112,7 @@ public class F_HocSinh extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Mã Học Sinh", "Tên Học Sinh", "Giới Tính", "Ngày Sinh", "Quê Quán", "Địa Chỉ", "Mã Lớp", "img"
+                "Mã Học Sinh", "Tên Học Sinh", "Giới Tính", "Ngày Sinh", "Quê Quán", "Địa Chỉ", "Mã Lớp"
             }
         ));
         jTable1.addMouseListener(new java.awt.event.MouseAdapter() {

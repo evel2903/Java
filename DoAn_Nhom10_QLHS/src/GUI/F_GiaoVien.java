@@ -60,19 +60,19 @@ public class F_GiaoVien extends javax.swing.JFrame {
             rows[i][1] = list.get(i).getTengiaovien();
             rows[i][2] = list.get(i).getNgaysinh();
             rows[i][3] = list.get(i).getGioitinh();
-            if (list.get(i).getImg() != null) {
-                ImageIcon image = new ImageIcon(new ImageIcon(list.get(i).getImg()).getImage()
-                        .getScaledInstance(150, 120, Image.SCALE_SMOOTH));
-                rows[i][4] = image;
-            } else {
-                rows[i][4] = null;
-            }
+//            if (list.get(i).getImg() != null) {
+//                ImageIcon image = new ImageIcon(new ImageIcon(list.get(i).getImg()).getImage()
+//                        .getScaledInstance(150, 120, Image.SCALE_SMOOTH));
+//                rows[i][4] = image;
+//            } else {
+//                rows[i][4] = null;
+//            }
             
         }
         TheModel model = new TheModel(rows, columnName);
         jTable1.setModel(model);
         jTable1.setRowHeight(120);
-        jTable1.getColumnModel().getColumn(4).setPreferredWidth(150);
+//        jTable1.getColumnModel().getColumn(4).setPreferredWidth(150);
 
     }
 
@@ -133,7 +133,7 @@ public class F_GiaoVien extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Mã Giáo Viên", "Họ Tên", "Ngày Sinh", "Giới Tính", "Ảnh Thẻ"
+                "Mã Giáo Viên", "Họ Tên", "Ngày Sinh", "Giới Tính"
             }
         ));
         jTable1.addMouseListener(new java.awt.event.MouseAdapter() {

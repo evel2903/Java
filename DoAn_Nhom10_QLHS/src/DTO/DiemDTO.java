@@ -10,18 +10,30 @@ package DTO;
  * @author HP
  */
 public class DiemDTO {
+    public String idtablebangdiem;
     public String idtablehocsinh;
     public String idtablemonhoc;
     public String idtablehocki;
-    public float diemtrungbinh;
+    public int diemtrungbinh;
+    
 
-    public DiemDTO(String idtablehocsinh, String idtablemonhoc, String idtablehocki, float diemtrungbinh) {
+    public DiemDTO(String idtablebangdiem, String idtablehocsinh, String idtablemonhoc, String idtablehocki, int diemtrungbinh) {
+        this.idtablebangdiem = idtablebangdiem;
         this.idtablehocsinh = idtablehocsinh;
         this.idtablemonhoc = idtablemonhoc;
         this.idtablehocki = idtablehocki;
         this.diemtrungbinh=diemtrungbinh;
     }
 
+    public String getIdtablebangdiem() {
+        return idtablebangdiem;
+    }
+
+    public void setIdtablebangdiem(String idtablebangdiem) {
+        this.idtablebangdiem = idtablebangdiem;
+    }
+    
+    
     public String getIdtablehocsinh() {
         return idtablehocsinh;
     }
@@ -46,11 +58,11 @@ public class DiemDTO {
         this.idtablehocki = idtablehocki;
     }
     
-    public void setDiemtrungbinh(float diemtrungbinh){
+    public void setDiemtrungbinh(int diemtrungbinh){
         this.diemtrungbinh=diemtrungbinh;
     }
     
-    public float getDiemtrungbinh(){
+    public int getDiemtrungbinh(){
         return diemtrungbinh;
     }
     
