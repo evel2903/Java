@@ -5,14 +5,17 @@
  */
 package GUI;
 
+import BLL.DiemBLL;
 import DTO.DiemDTO;
 import UTILS.ConnectionUtil;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
 /**
@@ -30,46 +33,50 @@ public class F_Diem extends javax.swing.JFrame {
     }
 
     //danh sach
-    public ArrayList<DiemDTO> getListDiem(){
-        ArrayList<DiemDTO> list=new ArrayList<>();
-        String sql="SELECT * FROM doan.tablemonhoc";
+    public ArrayList<DiemDTO> getListDiem() {
+        ArrayList<DiemDTO> list = new ArrayList<>();
+        String sql = "SELECT * FROM doan.tablediemthi";
         Statement st;
         ResultSet rs;
-        
+
         try {
-            ConnectionUtil conUtil=new ConnectionUtil();
-            Connection con=conUtil.getConnection();
+            ConnectionUtil conUtil = new ConnectionUtil();
+            Connection con = conUtil.getConnection();
             st = con.createStatement();
             rs = st.executeQuery(sql);
             DiemDTO diemDTO;
             while (rs.next()) {
-                diemDTO=new DiemDTO(rs.getString("idtablehocsinh"),
+                diemDTO = new DiemDTO(
+                        rs.getString("idtablebangdiem"),
+                        rs.getString("idtablehocsinh"),
                         rs.getString("idtablemonhoc"),
                         rs.getString("idtablehocki"),
-                        rs.getFloat("diemtrungbinh")
+                        rs.getInt("diemtrungbinh")
                 );
                 list.add(diemDTO);
-                
+
             }
         } catch (Exception e) {
         }
         return list;
     }
-    public void showdata(){
+
+    public void showdata() {
         ArrayList<DiemDTO> list = getListDiem();
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-        Object[] row = new Object[4];
+        Object[] row = new Object[5];
         for (int i = 0; i < list.size(); i++) {
-
-            row[0] = list.get(i).getIdtablehocsinh();
-            row[1] = list.get(i).getIdtablemonhoc();
-            row[2] = list.get(i).getIdtablehocki();
-            row[3]=list.get(i).getDiemtrungbinh();
+            row[0] = list.get(i).getIdtablebangdiem();
+            row[1] = list.get(i).getIdtablehocsinh();
+            row[2] = list.get(i).getIdtablemonhoc();
+            row[3] = list.get(i).getIdtablehocki();
+            row[4] = list.get(i).getDiemtrungbinh();
 
             model.addRow(row);
         }
-    
+        id_tu_dong = list.size();
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -92,6 +99,10 @@ public class F_Diem extends javax.swing.JFrame {
         btnadd = new javax.swing.JButton();
         btnupdate = new javax.swing.JButton();
         btndelete = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        txtdiem = new javax.swing.JTextField();
+        txtmabd = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -106,7 +117,7 @@ public class F_Diem extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Mã Học Sinh", "Mã Môn Học", "Mã Học Kì", "Điểm"
+                "Mã bảng điểm", "Mã Học Sinh", "Mã Môn Học", "Mã Học Kì", "Điểm"
             }
         ));
         jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -125,10 +136,29 @@ public class F_Diem extends javax.swing.JFrame {
         jLabel4.setText("Tìm Kiếm");
 
         btnadd.setText("thêm");
+        btnadd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnaddActionPerformed(evt);
+            }
+        });
 
         btnupdate.setText("sửa");
+        btnupdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnupdateActionPerformed(evt);
+            }
+        });
 
         btndelete.setText("xóa");
+        btndelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btndeleteActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setText("Điểm");
+
+        jLabel6.setText("Mã bảng điểm");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -137,24 +167,34 @@ public class F_Diem extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel1)
-                            .addComponent(btnadd))
-                        .addGap(68, 68, 68)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(txtmahs, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
-                                .addComponent(txtmamh)
-                                .addComponent(txtmahk))
+                            .addComponent(jLabel2)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(28, 28, 28)
-                                .addComponent(btnupdate)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 93, Short.MAX_VALUE)
-                                .addComponent(btndelete)))))
-                .addGap(29, 29, 29)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel1)
+                                    .addComponent(btnadd)
+                                    .addComponent(jLabel6))
+                                .addGap(68, 68, 68)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(28, 28, 28)
+                                        .addComponent(btnupdate)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 83, Short.MAX_VALUE)
+                                        .addComponent(btndelete))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addComponent(txtmabd)
+                                            .addComponent(txtdiem)
+                                            .addComponent(txtmahs, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
+                                            .addComponent(txtmamh, javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(txtmahk, javax.swing.GroupLayout.Alignment.LEADING))
+                                        .addGap(0, 0, Short.MAX_VALUE)))))
+                        .addGap(29, 29, 29))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
@@ -166,7 +206,11 @@ public class F_Diem extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(65, 65, 65)
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtmabd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6))
+                .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel1)
                     .addComponent(txtmahs, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -178,7 +222,11 @@ public class F_Diem extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(txtmahk, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(106, 106, 106)
+                .addGap(39, 39, 39)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(txtdiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(45, 45, 45)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnadd)
                     .addComponent(btnupdate)
@@ -208,10 +256,84 @@ public class F_Diem extends javax.swing.JFrame {
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         // TODO add your handling code here:
-        String idhs=txtmahs.getText();
-        String idmh=txtmamh.getText();
-        String idhk=txtmahk.getText();
+        int i = jTable1.getSelectedRow();
+        TableModel model = jTable1.getModel();
+
+        txtmabd.setText(model.getValueAt(i, 0).toString());
+        txtmahs.setText(model.getValueAt(i, 1).toString());
+        txtmamh.setText(model.getValueAt(i, 2).toString());
+        txtmahk.setText(model.getValueAt(i, 3).toString());
+        txtdiem.setText(model.getValueAt(i, 4).toString());
     }//GEN-LAST:event_jTable1MouseClicked
+
+    private void btnaddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnaddActionPerformed
+        // TODO add your handling code here:
+
+        String idbd = (txtmabd.getText());
+        //id_tu_dong=id_tu_dong+1;
+        String idhocsinh = txtdiem.getText();
+        String idmonhoc = txtmamh.getText();
+        String idhocki = txtmahk.getText();
+        int diem = Integer.parseInt(txtdiem.getText());
+        DiemDTO diemDTO = new DiemDTO(idbd, idhocsinh, idmonhoc, idhocki, diem);
+        DiemBLL diemBLL = new DiemBLL();
+
+        try {
+            if (diemBLL.Add(diemDTO) == true) {
+                DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+                model.setRowCount(0);
+                showdata();
+                JOptionPane.showConfirmDialog(null, "thanh cong");
+            }
+        } catch (Exception e) {
+            JOptionPane.showConfirmDialog(null, "khong thanh cong");
+        }
+
+    }//GEN-LAST:event_btnaddActionPerformed
+
+    private void btnupdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnupdateActionPerformed
+        // TODO add your handling code here:
+        String idbd = (txtmabd.getText());
+        //id_tu_dong=id_tu_dong+1;
+        String idhocsinh = txtdiem.getText();
+        String idmonhoc = txtmamh.getText();
+        String idhocki = txtmahk.getText();
+        int diem = Integer.parseInt(txtdiem.getText());
+        DiemDTO diemDTO = new DiemDTO(idbd, idhocsinh, idmonhoc, idhocki, diem);
+        DiemBLL diemBLL = new DiemBLL();
+
+        try {
+            if (diemBLL.Update(diemDTO) == true) {
+                JOptionPane.showConfirmDialog(null, "thanh cong");
+                DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+                model.setRowCount(0);
+                showdata();
+            }
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_btnupdateActionPerformed
+
+    private void btndeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btndeleteActionPerformed
+        // TODO add your handling code here:
+        String idbd = (txtmabd.getText());
+        //id_tu_dong=id_tu_dong+1;
+        String idhocsinh = txtdiem.getText();
+        String idmonhoc = txtmamh.getText();
+        String idhocki = txtmahk.getText();
+        int diem = Integer.parseInt(txtdiem.getText());
+        DiemDTO diemDTO = new DiemDTO(idbd, idhocsinh, idmonhoc, idhocki, diem);
+        DiemBLL diemBLL = new DiemBLL();
+
+        try {
+            if (diemBLL.Delete(diemDTO) == true) {
+                JOptionPane.showConfirmDialog(null, "thanh cong");
+                DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+                model.setRowCount(0);
+                showdata();
+            }
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_btndeleteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -256,11 +378,16 @@ public class F_Diem extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField search;
+    private javax.swing.JTextField txtdiem;
+    private javax.swing.JTextField txtmabd;
     private javax.swing.JTextField txtmahk;
     private javax.swing.JTextField txtmahs;
     private javax.swing.JTextField txtmamh;
     // End of variables declaration//GEN-END:variables
+    int id_tu_dong;//lay id cuoi cung cua danh sach de tu dong tang
 }
