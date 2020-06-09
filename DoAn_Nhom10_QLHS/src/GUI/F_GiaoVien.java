@@ -145,6 +145,11 @@ public class F_GiaoVien extends javax.swing.JFrame {
 
         jLabel5.setText("Tìm Kiếm");
 
+        txtsearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtsearchActionPerformed(evt);
+            }
+        });
         txtsearch.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtsearchKeyReleased(evt);
@@ -439,6 +444,10 @@ public class F_GiaoVien extends javax.swing.JFrame {
         jTable1.setRowSorter(trl);
         trl.setRowFilter(RowFilter.regexFilter(search));
     }//GEN-LAST:event_txtsearchKeyReleased
+
+    private void txtsearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtsearchActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtsearchActionPerformed
 
     /**
      * @param args the command line arguments

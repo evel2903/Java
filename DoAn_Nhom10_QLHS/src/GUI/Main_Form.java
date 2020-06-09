@@ -1668,7 +1668,7 @@ public class Main_Form extends javax.swing.JFrame {
             .addGroup(quanLyHSLayout.createSequentialGroup()
                 .addComponent(navBar_bar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(qlhs_content, javax.swing.GroupLayout.DEFAULT_SIZE, 804, Short.MAX_VALUE))
+                .addComponent(qlhs_content, javax.swing.GroupLayout.PREFERRED_SIZE, 804, Short.MAX_VALUE))
         );
 
         main_content.add(quanLyHS, "card2");
@@ -2243,15 +2243,11 @@ public class Main_Form extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JScrollPane jScrollPane6;
-    private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     private javax.swing.JTable jTable3;
     private javax.swing.JTable jTable4;
-    private javax.swing.JTable jTable5;
-    private javax.swing.JTable jTable6;
     private javax.swing.JTable jTable7;
     private javax.swing.JLabel logo;
     private javax.swing.JPanel main_content;
