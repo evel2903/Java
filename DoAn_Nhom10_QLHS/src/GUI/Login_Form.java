@@ -5,6 +5,7 @@
  */
 package GUI;
 
+import BLL.UserBLL;
 import javax.swing.JOptionPane;
 
 /**
@@ -117,8 +118,14 @@ public class Login_Form extends javax.swing.JFrame {
         //get String pass worrd 
         char[] pass = txtPassword.getPassword();
         String passString = String.copyValueOf(pass);
-        
-        JOptionPane.showMessageDialog(rootPane, user + "  *******  " + passString);
+        if (new UserBLL().checkedUser(user, passString)) {
+            Main_Form main_Form = new Main_Form();
+            main_Form.setVisible(true);
+            setVisible(false);
+        }
+        else{
+            JOptionPane.showMessageDialog(rootPane, "Sai tên đăng nhập hoặc mật khẩu");
+        }
         
     }//GEN-LAST:event_btnLoginActionPerformed
 

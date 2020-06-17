@@ -13,6 +13,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -36,7 +38,8 @@ public class HocSinhDAL {
             
             try {
                 st=con.createStatement();
-                rs=st.executeQuery("SELECT `idtablehocsinh`, `tenhocsinh`, `gioitinh`, `ngaysinh`, `quequan`, `diachi`, `idtablelop`, `img` FROM `doan`.`tablehocsinh`;");
+                rs=st.executeQuery("SELECT `idtablehocsinh`, `tenhocsinh`, `gioitinh`, `ngaysinh`, "
+                        + "`quequan`, `diachi`, `idtablelop` FROM `doan`.`tablehocsinh`;");
                 
                 HocSinhDTO hocSinhDTO;
                 while(rs.next()){
@@ -47,8 +50,7 @@ public class HocSinhDAL {
                             rs.getString("ngaysinh"),
                             rs.getString("quequan"),
                             rs.getString("diachi"),
-                            rs.getString("idtablelop"),
-                            rs.getBytes("img")
+                            rs.getString("idtablelop")
                     );
                 list.add(hocSinhDTO);
                 }
@@ -61,13 +63,12 @@ public class HocSinhDAL {
     
     public boolean ValuesAddHS(HocSinhDTO hocSinhDTO){
         int check = 0;
-        String sql = "INSERT INTO `doan`.`tablehocsinh` (`idtablehocsinh`, `tenhocsinh`, `gioitinh`, `ngaysinh`, `quequan`, `diachi`, `idtablelop`, `img`) VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
+        String sql = "INSERT INTO `doan`.`tablehocsinh` (`idtablehocsinh`, `tenhocsinh`, `gioitinh`, "
+                + "`ngaysinh`, `quequan`, `diachi`, `idtablelop`) VALUES (?, ?, ?, ?, ?, ?, ?);";
 
         try {
             conUtil = new ConnectionUtil();
             con = conUtil.getConnection();
-            //FileInputStream archivo = null;
-            //archivo=new FileInputStream(acu);
             preparedStatement = con.prepareStatement(sql);
             preparedStatement.setString(1, hocSinhDTO.getIdtablehocsinh());
             preparedStatement.setString(2, hocSinhDTO.getTenhocsinh());
@@ -76,17 +77,16 @@ public class HocSinhDAL {
             preparedStatement.setString(5, hocSinhDTO.getQuequan());
             preparedStatement.setString(6, hocSinhDTO.getDiachi());
             preparedStatement.setString(7, hocSinhDTO.getIdtablelop());
-            preparedStatement.setBytes(8, hocSinhDTO.getImg());
 
             check = preparedStatement.executeUpdate();
 
-        } catch (Exception e) {
-            JOptionPane.showConfirmDialog(null, "lỗi kết nối học sinh");
+        } catch (SQLException ex) {
+            Logger.getLogger(HocSinhDAL.class.getName()).log(Level.SEVERE, null, ex);
         }
         return check > 0;
     }
     
-    public boolean DelHS(HocSinhDTO hocSinhDTO){
+    public boolean DelHS(String id){
         int check=0;
         String sql="DELETE FROM `doan`.`tablehocsinh` WHERE (`idtablehocsinh` = ?);";
         
@@ -96,20 +96,11 @@ public class HocSinhDAL {
             
             preparedStatement=con.prepareStatement(sql);
             
-            preparedStatement.setString(1, hocSinhDTO.getIdtablehocsinh());
+            preparedStatement.setString(1, id);
             
             check=preparedStatement.executeUpdate();
-        } catch (Exception e) {
-            JOptionPane.showConfirmDialog(null, "looix");
-        }finally {
-            try {
-                con.close();
-                preparedStatement.close();
-
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-
+        }catch (SQLException ex) {
+                Logger.getLogger(HocSinhDAL.class.getName()).log(Level.SEVERE, null, ex);
         }
         return check>0;
     }
@@ -118,76 +109,28 @@ public class HocSinhDAL {
     //Update
     public boolean ValueUpdate(HocSinhDTO hocSinhDTO){
         int check=0;
-        String sql="UPDATE `doan`.`tablehocsinh` SET `tenhocsinh` = ?, `gioitinh` = ?, `ngaysinh` = ?, `quequan` = ?, `diachi` = ?, `idtablelop` = ?, `img` = ? WHERE (`idtablehocsinh` = ?);";
+        String sql="UPDATE `doan`.`tablehocsinh` SET `tenhocsinh` = ?, `gioitinh` = ?, `ngaysinh` = ?"
+                + ", `quequan` = ?, `diachi` = ?"
+                + "WHERE (`idtablehocsinh` = ?);";
         
         try {
             conUtil=new ConnectionUtil();
             con=conUtil.getConnection();
             
             preparedStatement=con.prepareStatement(sql);
-            
-            
+                 
             preparedStatement.setString(1, hocSinhDTO.getTenhocsinh());
             preparedStatement.setString(2, hocSinhDTO.getGioitinh());
             preparedStatement.setString(3, hocSinhDTO.getNgaysinh());
             preparedStatement.setString(4, hocSinhDTO.getQuequan());
             preparedStatement.setString(5, hocSinhDTO.getDiachi());
-            preparedStatement.setString(6, hocSinhDTO.getIdtablelop());
-            preparedStatement.setBytes(7, hocSinhDTO.getImg());
-            preparedStatement.setString(8, hocSinhDTO.getIdtablehocsinh());
-            
+            preparedStatement.setString(6, hocSinhDTO.getIdtablehocsinh());       
             check=preparedStatement.executeUpdate();
-        } catch (Exception e) {
-            JOptionPane.showConfirmDialog(null, "khong the thay doi ma");
-        }finally {
-            try {
-                con.close();
-                preparedStatement.close();
-
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-
+        } catch (SQLException ex) {
+            Logger.getLogger(HocSinhDAL.class.getName()).log(Level.SEVERE, null, ex);
         }
         return check!=0;
         
     }
     
-    //update neu k thay doi hinh
-    public boolean ValueUpdate2(HocSinhDTO hocSinhDTO){
-        int check=0;
-        String sql="UPDATE `doan`.`tablehocsinh` SET `tenhocsinh` = ?, `gioitinh` = ?, `ngaysinh` = ?, `quequan` = ?, `diachi` = ?, `idtablelop` = ? WHERE (`idtablehocsinh` = ?);";
-        
-        try {
-            conUtil=new ConnectionUtil();
-            con=conUtil.getConnection();
-            
-            preparedStatement=con.prepareStatement(sql);
-            
-            
-            preparedStatement.setString(1, hocSinhDTO.getTenhocsinh());
-            preparedStatement.setString(2, hocSinhDTO.getGioitinh());
-            preparedStatement.setString(3, hocSinhDTO.getNgaysinh());
-            preparedStatement.setString(4, hocSinhDTO.getQuequan());
-            preparedStatement.setString(5, hocSinhDTO.getDiachi());
-            preparedStatement.setString(6, hocSinhDTO.getIdtablelop());
-            
-            preparedStatement.setString(7, hocSinhDTO.getIdtablehocsinh());
-            
-            check=preparedStatement.executeUpdate();
-        } catch (Exception e) {
-            JOptionPane.showConfirmDialog(null, "khong the thay doi ma");
-        }finally {
-            try {
-                con.close();
-                preparedStatement.close();
-
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-
-        }
-        return check!=0;
-        
-    }
 }

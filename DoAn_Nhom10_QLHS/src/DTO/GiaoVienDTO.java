@@ -14,14 +14,12 @@ public class GiaoVienDTO {
     public String tengiaovien;
     public String ngaysinh;
     public String gioitinh;
-    public byte[] img;
     
-    public GiaoVienDTO(String idtablegiaovien, String tengiaovien, String ngaysinh, String gioitinh, byte [] img){
+    public GiaoVienDTO(String idtablegiaovien, String tengiaovien, String ngaysinh, String gioitinh){
         this.idtablegiaovien=idtablegiaovien;
         this.tengiaovien=tengiaovien;
         this.ngaysinh=ngaysinh;
         this.gioitinh=gioitinh;
-        this.img=img;
     
     }
 
@@ -41,10 +39,6 @@ public class GiaoVienDTO {
         return gioitinh;
     }
 
-    public byte[] getImg() {
-        return img;
-    }
-
     public void setIdtablegiaovien(String idtablegiaovien) {
         this.idtablegiaovien = idtablegiaovien;
     }
@@ -61,9 +55,5 @@ public class GiaoVienDTO {
         this.gioitinh = gioitinh;
     }
 
-    public void setImg(byte[] img) {
-        this.img = img;
-    }
-    
    
 }

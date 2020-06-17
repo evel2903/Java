@@ -481,10 +481,9 @@ public class F_HocSinh extends javax.swing.JFrame {
     private void btndeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btndeleteActionPerformed
         // TODO add your handling code here:
         String id = txtmahs.getText();
-        HocSinhDTO hocSinhDTO = new HocSinhDTO(id, null, null, null, null, null, null, null);
         HocSinhBLL hocSinhBLL = new HocSinhBLL();
 
-        if (hocSinhBLL.DeleteHS(hocSinhDTO) == true) {
+        if (hocSinhBLL.DeleteHS(id) == true) {
             TableModel model = jTable1.getModel();
             showdata();
             JOptionPane.showConfirmDialog(null, "thanh cong");

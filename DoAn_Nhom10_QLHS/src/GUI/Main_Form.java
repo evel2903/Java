@@ -5,12 +5,21 @@
  */
 package GUI;
 
+import BLL.GiaoVienBLL;
+import BLL.HocSinhBLL;
+import DAL.GiaoVienDAL;
+import DAL.HocSinhDAL;
+import DTO.GiaoVienDTO;
+import DTO.HocSinhDTO;
 import java.awt.Color;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.JOptionPane;
+import javax.swing.RowFilter;
 import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 
 /**
  *
@@ -62,27 +71,27 @@ public class Main_Form extends javax.swing.JFrame {
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
-        txtmahs = new javax.swing.JTextField();
-        nam = new javax.swing.JRadioButton();
-        nu = new javax.swing.JRadioButton();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
-        txttenhs = new javax.swing.JTextField();
-        txtquequan = new javax.swing.JTextField();
-        txtdiachi = new javax.swing.JTextField();
-        txtmalop1 = new javax.swing.JTextField();
-        btnadd = new javax.swing.JButton();
-        btnupdate = new javax.swing.JButton();
-        btndelete = new javax.swing.JButton();
+        F_HS_txtmahs = new javax.swing.JTextField();
+        F_HS_nam = new javax.swing.JRadioButton();
+        F_HS_nu = new javax.swing.JRadioButton();
+        F_HS_txtNgaySinh = new com.toedter.calendar.JDateChooser();
+        F_HS_txttenhs = new javax.swing.JTextField();
+        F_HS_txtquequan = new javax.swing.JTextField();
+        F_HS_txtdiachi = new javax.swing.JTextField();
+        F_HS_txtmalop = new javax.swing.JTextField();
+        F_HS_btnAdd = new javax.swing.JButton();
+        F_HS_btnUpdate = new javax.swing.JButton();
+        F_HS_btnDelete = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
-        txtSearchHs = new javax.swing.JTextField();
+        txtSearchF_HS = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableHS = new javax.swing.JTable();
         F_GiaoVien = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        txtSearchGv = new javax.swing.JTextField();
+        tableGV = new javax.swing.JTable();
+        txtSearchF_GV = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
@@ -90,14 +99,14 @@ public class Main_Form extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
-        txtidgiaovien = new javax.swing.JTextField();
-        nam1 = new javax.swing.JRadioButton();
-        nu1 = new javax.swing.JRadioButton();
-        jDateChooser2 = new com.toedter.calendar.JDateChooser();
-        txttengiaovien = new javax.swing.JTextField();
-        btnaddgv = new javax.swing.JButton();
-        btnupdategv = new javax.swing.JButton();
-        btndeletegv = new javax.swing.JButton();
+        F_GV_txtidgiaovien = new javax.swing.JTextField();
+        F_GV_nam = new javax.swing.JRadioButton();
+        F_GV_nu = new javax.swing.JRadioButton();
+        F_GV_NgaySinh = new com.toedter.calendar.JDateChooser();
+        F_GV_txttengiaovien = new javax.swing.JTextField();
+        F_GV_btnAdd = new javax.swing.JButton();
+        F_GV_btnUpdate = new javax.swing.JButton();
+        F_GV_btnDelete = new javax.swing.JButton();
         F_LopHoc = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -432,58 +441,82 @@ public class Main_Form extends javax.swing.JFrame {
         jLabel18.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         jLabel18.setText("Mã lớp");
 
-        txtmahs.setFont(new java.awt.Font("Arial Narrow", 0, 16)); // NOI18N
-        txtmahs.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtmahs.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
-        txtmahs.addActionListener(new java.awt.event.ActionListener() {
+        F_HS_txtmahs.setBackground(new java.awt.Color(153, 204, 255));
+        F_HS_txtmahs.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        F_HS_txtmahs.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        F_HS_txtmahs.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+        F_HS_txtmahs.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtmahsActionPerformed(evt);
+                F_HS_txtmahsActionPerformed(evt);
             }
         });
 
-        nam.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        nam.setText("nam");
-        nam.addActionListener(new java.awt.event.ActionListener() {
+        F_HS_nam.setBackground(new java.awt.Color(153, 204, 255));
+        F_HS_nam.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        F_HS_nam.setText("nam");
+        F_HS_nam.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                namActionPerformed(evt);
+                F_HS_namActionPerformed(evt);
             }
         });
 
-        nu.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        nu.setText("Nữ");
-        nu.addActionListener(new java.awt.event.ActionListener() {
+        F_HS_nu.setBackground(new java.awt.Color(153, 204, 255));
+        F_HS_nu.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        F_HS_nu.setText("Nữ");
+        F_HS_nu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nuActionPerformed(evt);
+                F_HS_nuActionPerformed(evt);
             }
         });
 
-        txttenhs.setFont(new java.awt.Font("Arial Narrow", 0, 16)); // NOI18N
-        txttenhs.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txttenhs.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+        F_HS_txtNgaySinh.setBackground(new java.awt.Color(153, 204, 255));
 
-        txtquequan.setFont(new java.awt.Font("Arial Narrow", 0, 16)); // NOI18N
-        txtquequan.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtquequan.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+        F_HS_txttenhs.setBackground(new java.awt.Color(153, 204, 255));
+        F_HS_txttenhs.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        F_HS_txttenhs.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        F_HS_txttenhs.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
 
-        txtdiachi.setFont(new java.awt.Font("Arial Narrow", 0, 16)); // NOI18N
-        txtdiachi.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtdiachi.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+        F_HS_txtquequan.setBackground(new java.awt.Color(153, 204, 255));
+        F_HS_txtquequan.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        F_HS_txtquequan.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        F_HS_txtquequan.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
 
-        txtmalop1.setFont(new java.awt.Font("Arial Narrow", 0, 16)); // NOI18N
-        txtmalop1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtmalop1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+        F_HS_txtdiachi.setBackground(new java.awt.Color(153, 204, 255));
+        F_HS_txtdiachi.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        F_HS_txtdiachi.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        F_HS_txtdiachi.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
 
-        btnadd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/add.png"))); // NOI18N
-        btnadd.setBorder(null);
-        btnadd.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        F_HS_txtmalop.setBackground(new java.awt.Color(153, 204, 255));
+        F_HS_txtmalop.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        F_HS_txtmalop.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        F_HS_txtmalop.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
 
-        btnupdate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/update.png"))); // NOI18N
-        btnupdate.setBorder(null);
-        btnupdate.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        F_HS_btnAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/add.png"))); // NOI18N
+        F_HS_btnAdd.setBorder(null);
+        F_HS_btnAdd.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        F_HS_btnAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                F_HS_btnAddActionPerformed(evt);
+            }
+        });
 
-        btndelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/del.png"))); // NOI18N
-        btndelete.setBorder(null);
-        btndelete.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        F_HS_btnUpdate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/update.png"))); // NOI18N
+        F_HS_btnUpdate.setBorder(null);
+        F_HS_btnUpdate.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        F_HS_btnUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                F_HS_btnUpdateActionPerformed(evt);
+            }
+        });
+
+        F_HS_btnDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/del.png"))); // NOI18N
+        F_HS_btnDelete.setBorder(null);
+        F_HS_btnDelete.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        F_HS_btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                F_HS_btnDeleteActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -507,12 +540,12 @@ public class Main_Form extends javax.swing.JFrame {
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addComponent(nam)
+                                                .addComponent(F_HS_nam)
                                                 .addGap(44, 44, 44)
-                                                .addComponent(nu))
-                                            .addComponent(txtmahs, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addComponent(F_HS_nu))
+                                            .addComponent(F_HS_txtmahs, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGap(0, 0, Short.MAX_VALUE))
-                                    .addComponent(txttenhs)))
+                                    .addComponent(F_HS_txttenhs)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel15)
@@ -523,18 +556,18 @@ public class Main_Form extends javax.swing.JFrame {
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGap(40, 40, 40)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(txtquequan)
-                                            .addComponent(txtdiachi)
-                                            .addComponent(txtmalop1)))
+                                            .addComponent(F_HS_txtquequan)
+                                            .addComponent(F_HS_txtdiachi)
+                                            .addComponent(F_HS_txtmalop)))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGap(45, 45, 45)
-                                        .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                        .addComponent(F_HS_txtNgaySinh, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(btnadd)
+                                .addComponent(F_HS_btnAdd)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnupdate)
+                                .addComponent(F_HS_btnUpdate)
                                 .addGap(83, 83, 83)
-                                .addComponent(btndelete)))))
+                                .addComponent(F_HS_btnDelete)))))
                 .addGap(40, 40, 40))
         );
         jPanel1Layout.setVerticalGroup(
@@ -545,57 +578,48 @@ public class Main_Form extends javax.swing.JFrame {
                 .addGap(45, 45, 45)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtmahs, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(F_HS_txtmahs, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(40, 40, 40)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txttenhs, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(F_HS_txttenhs, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(40, 40, 40)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(nam, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(nu, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(F_HS_nam, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(F_HS_nu, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(40, 40, 40)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(F_HS_txtNgaySinh, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(40, 40, 40)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtquequan, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(F_HS_txtquequan, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(40, 40, 40)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtdiachi, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(F_HS_txtdiachi, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(40, 40, 40)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtmalop1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
+                    .addComponent(F_HS_txtmalop, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 119, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnadd)
-                    .addComponent(btndelete)
-                    .addComponent(btnupdate))
+                    .addComponent(F_HS_btnAdd)
+                    .addComponent(F_HS_btnDelete)
+                    .addComponent(F_HS_btnUpdate))
                 .addGap(65, 65, 65))
         );
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
-        txtSearchHs.setFont(new java.awt.Font("Arial", 2, 18)); // NOI18N
-        txtSearchHs.setForeground(java.awt.Color.lightGray);
-        txtSearchHs.setText("Search");
-        txtSearchHs.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
-        txtSearchHs.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtSearchHsFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtSearchHsFocusLost(evt);
-            }
-        });
-        txtSearchHs.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSearchHsActionPerformed(evt);
+        txtSearchF_HS.setFont(new java.awt.Font("Arial", 2, 18)); // NOI18N
+        txtSearchF_HS.setForeground(java.awt.Color.lightGray);
+        txtSearchF_HS.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+        txtSearchF_HS.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtSearchF_HSKeyReleased(evt);
             }
         });
 
@@ -627,16 +651,16 @@ public class Main_Form extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, 0)
-                        .addComponent(txtSearchHs, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1004, Short.MAX_VALUE))
+                        .addComponent(txtSearchF_HS, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1001, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(15, Short.MAX_VALUE)
+                .addContainerGap(60, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtSearchHs)
+                    .addComponent(txtSearchF_HS)
                     .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 739, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -665,7 +689,7 @@ public class Main_Form extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tableGV.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -673,28 +697,19 @@ public class Main_Form extends javax.swing.JFrame {
                 "Mã Giáo Viên", "Họ Tên", "Ngày Sinh", "Giới Tính"
             }
         ));
-        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+        tableGV.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTable1MouseClicked(evt);
+                tableGVMouseClicked(evt);
             }
         });
-        jScrollPane2.setViewportView(jTable1);
+        jScrollPane2.setViewportView(tableGV);
 
-        txtSearchGv.setFont(new java.awt.Font("Arial", 2, 18)); // NOI18N
-        txtSearchGv.setForeground(java.awt.Color.lightGray);
-        txtSearchGv.setText("Search");
-        txtSearchGv.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
-        txtSearchGv.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtSearchGvFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtSearchGvFocusLost(evt);
-            }
-        });
-        txtSearchGv.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSearchGvActionPerformed(evt);
+        txtSearchF_GV.setFont(new java.awt.Font("Arial", 2, 18)); // NOI18N
+        txtSearchF_GV.setForeground(java.awt.Color.lightGray);
+        txtSearchF_GV.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+        txtSearchF_GV.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtSearchF_GVKeyReleased(evt);
             }
         });
 
@@ -711,7 +726,7 @@ public class Main_Form extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, 0)
-                        .addComponent(txtSearchGv, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtSearchF_GV, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1004, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -720,7 +735,7 @@ public class Main_Form extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtSearchGv)
+                    .addComponent(txtSearchF_GV)
                     .addComponent(jLabel5))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 739, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -744,49 +759,63 @@ public class Main_Form extends javax.swing.JFrame {
         jLabel21.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         jLabel21.setText("Ngày sinh");
 
-        txtidgiaovien.setFont(new java.awt.Font("Arial Narrow", 0, 16)); // NOI18N
-        txtidgiaovien.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtidgiaovien.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
-        txtidgiaovien.addActionListener(new java.awt.event.ActionListener() {
+        F_GV_txtidgiaovien.setBackground(new java.awt.Color(153, 204, 255));
+        F_GV_txtidgiaovien.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        F_GV_txtidgiaovien.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        F_GV_txtidgiaovien.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+        F_GV_txtidgiaovien.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtidgiaovienActionPerformed(evt);
+                F_GV_txtidgiaovienActionPerformed(evt);
             }
         });
 
-        nam1.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        nam1.setText("nam");
-        nam1.addActionListener(new java.awt.event.ActionListener() {
+        F_GV_nam.setBackground(new java.awt.Color(153, 204, 255));
+        F_GV_nam.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        F_GV_nam.setText("nam");
+        F_GV_nam.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nam1ActionPerformed(evt);
+                F_GV_namActionPerformed(evt);
             }
         });
 
-        nu1.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        nu1.setText("Nữ");
-        nu1.addActionListener(new java.awt.event.ActionListener() {
+        F_GV_nu.setBackground(new java.awt.Color(153, 204, 255));
+        F_GV_nu.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        F_GV_nu.setText("Nữ");
+        F_GV_nu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nu1ActionPerformed(evt);
+                F_GV_nuActionPerformed(evt);
             }
         });
 
-        txttengiaovien.setFont(new java.awt.Font("Arial Narrow", 0, 16)); // NOI18N
-        txttengiaovien.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txttengiaovien.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+        F_GV_txttengiaovien.setBackground(new java.awt.Color(153, 204, 255));
+        F_GV_txttengiaovien.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        F_GV_txttengiaovien.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        F_GV_txttengiaovien.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
 
-        btnaddgv.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/add.png"))); // NOI18N
-        btnaddgv.setBorder(null);
-        btnaddgv.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
-        btnupdategv.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/update.png"))); // NOI18N
-        btnupdategv.setBorder(null);
-        btnupdategv.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
-        btndeletegv.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/del.png"))); // NOI18N
-        btndeletegv.setBorder(null);
-        btndeletegv.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btndeletegv.addActionListener(new java.awt.event.ActionListener() {
+        F_GV_btnAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/add.png"))); // NOI18N
+        F_GV_btnAdd.setBorder(null);
+        F_GV_btnAdd.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        F_GV_btnAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btndeletegvActionPerformed(evt);
+                F_GV_btnAddActionPerformed(evt);
+            }
+        });
+
+        F_GV_btnUpdate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/update.png"))); // NOI18N
+        F_GV_btnUpdate.setBorder(null);
+        F_GV_btnUpdate.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        F_GV_btnUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                F_GV_btnUpdateActionPerformed(evt);
+            }
+        });
+
+        F_GV_btnDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/del.png"))); // NOI18N
+        F_GV_btnDelete.setBorder(null);
+        F_GV_btnDelete.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        F_GV_btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                F_GV_btnDeleteActionPerformed(evt);
             }
         });
 
@@ -804,11 +833,11 @@ public class Main_Form extends javax.swing.JFrame {
                         .addGap(40, 40, 40)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(btnaddgv)
+                                .addComponent(F_GV_btnAdd)
                                 .addGap(85, 85, 85)
-                                .addComponent(btnupdategv)
+                                .addComponent(F_GV_btnUpdate)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btndeletegv))
+                                .addComponent(F_GV_btnDelete))
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel19)
@@ -817,16 +846,16 @@ public class Main_Form extends javax.swing.JFrame {
                                 .addGap(19, 19, 19)
                                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel4Layout.createSequentialGroup()
-                                        .addComponent(nam1)
+                                        .addComponent(F_GV_nam)
                                         .addGap(44, 44, 44)
-                                        .addComponent(nu1)
+                                        .addComponent(F_GV_nu)
                                         .addGap(0, 245, Short.MAX_VALUE))
-                                    .addComponent(txttengiaovien)
-                                    .addComponent(txtidgiaovien)))
+                                    .addComponent(F_GV_txttengiaovien)
+                                    .addComponent(F_GV_txtidgiaovien)))
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addComponent(jLabel21)
                                 .addGap(45, 45, 45)
-                                .addComponent(jDateChooser2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                                .addComponent(F_GV_NgaySinh, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                 .addGap(40, 40, 40))
         );
         jPanel4Layout.setVerticalGroup(
@@ -837,26 +866,26 @@ public class Main_Form extends javax.swing.JFrame {
                 .addGap(45, 45, 45)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtidgiaovien, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(F_GV_txtidgiaovien, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(40, 40, 40)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txttengiaovien, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(F_GV_txttengiaovien, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(40, 40, 40)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(nam1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(nu1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(F_GV_nam, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(F_GV_nu, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(40, 40, 40)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(F_GV_NgaySinh, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(50, 50, 50)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnupdategv)
-                    .addComponent(btnaddgv)
-                    .addComponent(btndeletegv))
-                .addContainerGap(330, Short.MAX_VALUE))
+                    .addComponent(F_GV_btnUpdate)
+                    .addComponent(F_GV_btnAdd)
+                    .addComponent(F_GV_btnDelete))
+                .addContainerGap(375, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout F_GiaoVienLayout = new javax.swing.GroupLayout(F_GiaoVien);
@@ -870,7 +899,7 @@ public class Main_Form extends javax.swing.JFrame {
         );
         F_GiaoVienLayout.setVerticalGroup(
             F_GiaoVienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 849, Short.MAX_VALUE)
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
@@ -1078,7 +1107,7 @@ public class Main_Form extends javax.swing.JFrame {
                     .addComponent(btnupdatelh)
                     .addComponent(btnaddlh)
                     .addComponent(btndeletelh))
-                .addContainerGap(221, Short.MAX_VALUE))
+                .addContainerGap(266, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout F_LopHocLayout = new javax.swing.GroupLayout(F_LopHoc);
@@ -1092,7 +1121,7 @@ public class Main_Form extends javax.swing.JFrame {
         );
         F_LopHocLayout.setVerticalGroup(
             F_LopHocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, 849, Short.MAX_VALUE)
             .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
@@ -1265,7 +1294,7 @@ public class Main_Form extends javax.swing.JFrame {
                     .addComponent(btnupdatemh)
                     .addComponent(btnaddmh)
                     .addComponent(btndeletemh))
-                .addContainerGap(412, Short.MAX_VALUE))
+                .addContainerGap(457, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout F_MonHocLayout = new javax.swing.GroupLayout(F_MonHoc);
@@ -1280,7 +1309,7 @@ public class Main_Form extends javax.swing.JFrame {
         );
         F_MonHocLayout.setVerticalGroup(
             F_MonHocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, 849, Short.MAX_VALUE)
             .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
@@ -1435,7 +1464,7 @@ public class Main_Form extends javax.swing.JFrame {
         );
         F_KhoaHocLayout.setVerticalGroup(
             F_KhoaHocLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, 809, Short.MAX_VALUE)
+            .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, 849, Short.MAX_VALUE)
             .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
@@ -1636,7 +1665,7 @@ public class Main_Form extends javax.swing.JFrame {
                     .addComponent(btnupdatelrl)
                     .addComponent(btnaddrl)
                     .addComponent(btndeletelh1))
-                .addContainerGap(331, Short.MAX_VALUE))
+                .addContainerGap(376, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout F_RenLuyenLayout = new javax.swing.GroupLayout(F_RenLuyen);
@@ -1650,7 +1679,7 @@ public class Main_Form extends javax.swing.JFrame {
         );
         F_RenLuyenLayout.setVerticalGroup(
             F_RenLuyenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel12, javax.swing.GroupLayout.DEFAULT_SIZE, 849, Short.MAX_VALUE)
             .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
@@ -1668,7 +1697,7 @@ public class Main_Form extends javax.swing.JFrame {
             .addGroup(quanLyHSLayout.createSequentialGroup()
                 .addComponent(navBar_bar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(qlhs_content, javax.swing.GroupLayout.PREFERRED_SIZE, 804, Short.MAX_VALUE))
+                .addComponent(qlhs_content, javax.swing.GroupLayout.DEFAULT_SIZE, 849, Short.MAX_VALUE))
         );
 
         main_content.add(quanLyHS, "card2");
@@ -1692,7 +1721,7 @@ public class Main_Form extends javax.swing.JFrame {
             .addGroup(quanLyDiemLayout.createSequentialGroup()
                 .addGap(340, 340, 340)
                 .addComponent(jLabel2)
-                .addContainerGap(501, Short.MAX_VALUE))
+                .addContainerGap(546, Short.MAX_VALUE))
         );
 
         main_content.add(quanLyDiem, "card3");
@@ -1805,6 +1834,7 @@ public class Main_Form extends javax.swing.JFrame {
         qlhs_content.add(F_HocSinh);
         qlhs_content.repaint();
         qlhs_content.revalidate();
+        showdataF_HS();
     }//GEN-LAST:event_sub_qlhs_hsActionPerformed
 
     private void sub_qlhs_gvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sub_qlhs_gvActionPerformed
@@ -1817,41 +1847,42 @@ public class Main_Form extends javax.swing.JFrame {
         qlhs_content.add(F_GiaoVien);
         qlhs_content.repaint();
         qlhs_content.revalidate();
+        showdataF_GV();
     }//GEN-LAST:event_sub_qlhs_gvActionPerformed
 
-    private void txtmahsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtmahsActionPerformed
+    private void F_HS_txtmahsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_F_HS_txtmahsActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtmahsActionPerformed
+    }//GEN-LAST:event_F_HS_txtmahsActionPerformed
 
-    private void namActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_namActionPerformed
+    private void F_HS_namActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_F_HS_namActionPerformed
         // TODO add your handling code here:
-        if (nam.isSelected()) {
-            nu.setSelected(false);
+        if (F_HS_nam.isSelected()) {
+            F_HS_nu.setSelected(false);
         }
-    }//GEN-LAST:event_namActionPerformed
+    }//GEN-LAST:event_F_HS_namActionPerformed
 
-    private void nuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nuActionPerformed
+    private void F_HS_nuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_F_HS_nuActionPerformed
         // TODO add your handling code here:
-        if (nu.isSelected()) {
-            nam.setSelected(false);
+        if (F_HS_nu.isSelected()) {
+            F_HS_nam.setSelected(false);
         }
-    }//GEN-LAST:event_nuActionPerformed
+    }//GEN-LAST:event_F_HS_nuActionPerformed
 
-    private void txtidgiaovienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtidgiaovienActionPerformed
+    private void F_GV_txtidgiaovienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_F_GV_txtidgiaovienActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtidgiaovienActionPerformed
+    }//GEN-LAST:event_F_GV_txtidgiaovienActionPerformed
 
-    private void nam1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nam1ActionPerformed
+    private void F_GV_namActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_F_GV_namActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_nam1ActionPerformed
+    }//GEN-LAST:event_F_GV_namActionPerformed
 
-    private void nu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nu1ActionPerformed
+    private void F_GV_nuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_F_GV_nuActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_nu1ActionPerformed
+    }//GEN-LAST:event_F_GV_nuActionPerformed
 
-    private void btndeletegvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btndeletegvActionPerformed
+    private void F_GV_btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_F_GV_btnDeleteActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btndeletegvActionPerformed
+    }//GEN-LAST:event_F_GV_btnDeleteActionPerformed
 
     private void txtmalopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtmalopActionPerformed
         // TODO add your handling code here:
@@ -1929,17 +1960,17 @@ public class Main_Form extends javax.swing.JFrame {
         // TODO add your handling code here:
         int i = tableHS.getSelectedRow();
         TableModel model = tableHS.getModel();
-        txtmahs.setText(model.getValueAt(i, 0).toString());
-        txttenhs.setText(model.getValueAt(i, 1).toString());
+        F_HS_txtmahs.setText(model.getValueAt(i, 0).toString());
+        F_HS_txttenhs.setText(model.getValueAt(i, 1).toString());
         // lấy giá trị giới tính
         try {
             if ("nam".equals(model.getValueAt(i, 2).toString()) == true) {
-                nam.setSelected(true);
-                nu.setSelected(false);
+                F_HS_nam.setSelected(true);
+                F_HS_nu.setSelected(false);
             }
             if ("nữ".equals(model.getValueAt(i, 2).toString()) == true) {
-                nam.setSelected(false);
-                nu.setSelected(true);
+                F_HS_nam.setSelected(false);
+                F_HS_nu.setSelected(true);
             }
         } catch (Exception e) {
             JOptionPane.showConfirmDialog(null, "khong lay duoc gia tri gioi tinh");
@@ -1947,91 +1978,53 @@ public class Main_Form extends javax.swing.JFrame {
         //ngày sinh
         try {
             Date date = new SimpleDateFormat("yyyy-MM-dd").parse((String) model.getValueAt(i, 3));
-            jDateChooser1.setDate(date);
+            F_HS_txtNgaySinh.setDate(date);
         } catch (ParseException e) {
             JOptionPane.showConfirmDialog(null, "khong lay duoc gia tri ngay thang");
         }
         //quê quán
-        txtquequan.setText(model.getValueAt(i, 4).toString());
-        txtdiachi.setText(model.getValueAt(i, 5).toString());
-        txtmalop.setText(model.getValueAt(i, 6).toString());
+        F_HS_txtquequan.setText(model.getValueAt(i, 4).toString());
+        F_HS_txtdiachi.setText(model.getValueAt(i, 5).toString());
+        F_HS_txtmalop.setText(model.getValueAt(i, 6).toString());
 
         
     }//GEN-LAST:event_tableHSMouseClicked
 
-    private void txtSearchHsFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtSearchHsFocusGained
+    private void tableGVMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableGVMouseClicked
         // TODO add your handling code here:
-        if(txtSearchHs.getText() != "")
-            {
-                txtSearchHs.setText("");
-                txtSearchHs.setForeground(Color.black);
-                repaint();
-                revalidate();
-            }  
-    }//GEN-LAST:event_txtSearchHsFocusGained
-
-    private void txtSearchHsFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtSearchHsFocusLost
-        // TODO add your handling code here:
-        if(txtSearchHs.getText().equals(""))
-            {
-                txtSearchHs.setText("Search");
-                txtSearchHs.setForeground(Color.lightGray);
-                repaint();
-                revalidate();
-            } 
-    }//GEN-LAST:event_txtSearchHsFocusLost
-
-    private void txtSearchHsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchHsActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtSearchHsActionPerformed
-
-    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
-        // TODO add your handling code here:
-        int i = jTable1.getSelectedRow();
-        TableModel model = jTable1.getModel();
+        int i = tableGV.getSelectedRow();
+        TableModel model = tableGV.getModel();
         //lấy mã giáo viên
-        txtidgiaovien.setText(model.getValueAt(i, 0).toString());
+        F_GV_txtidgiaovien.setText(model.getValueAt(i, 0).toString());
         //lấy họ tên giáo viên
-        txttengiaovien.setText(model.getValueAt(i, 1).toString());
+        F_GV_txttengiaovien.setText(model.getValueAt(i, 1).toString());
         //lấy ngyaf tháng
         try {
             Date date = new SimpleDateFormat("yyyy-MM-dd").parse((String) model.getValueAt(i, 2));
-            jDateChooser1.setDate(date);
+            F_GV_NgaySinh.setDate(date);
         } catch (ParseException e) {
             JOptionPane.showConfirmDialog(null, "khong lay duoc gia tri ngay thang");
         }
         // lấy giá trị giới tính
         try {
             if ("nam".equals(model.getValueAt(i, 3).toString()) == true) {
-                nam.setSelected(true);
-                nu.setSelected(false);
+                F_GV_nam.setSelected(true);
+                F_GV_nu.setSelected(false);
             }
             if ("nữ".equals(model.getValueAt(i, 3).toString()) == true) {
-                nam.setSelected(false);
-                nu.setSelected(true);
+                F_GV_nam.setSelected(false);
+                F_GV_nu.setSelected(true);
             }
         } catch (Exception e) {
             JOptionPane.showConfirmDialog(null, "khong lay duoc gia tri gioi tinh");
         }
 
-    }//GEN-LAST:event_jTable1MouseClicked
-
-    private void txtSearchGvFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtSearchGvFocusGained
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtSearchGvFocusGained
-
-    private void txtSearchGvFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtSearchGvFocusLost
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtSearchGvFocusLost
-
-    private void txtSearchGvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchGvActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtSearchGvActionPerformed
+    }//GEN-LAST:event_tableGVMouseClicked
 
     private void jTable2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MouseClicked
         // TODO add your handling code here:
-        int i=jTable1.getSelectedRow();
-        TableModel model=jTable1.getModel();
+        int i=tableGV.getSelectedRow();
+        TableModel model=tableGV.getModel();
 
         //display seleted Row
         txtmalop.setText(model.getValueAt(i, 0).toString());
@@ -2067,8 +2060,8 @@ public class Main_Form extends javax.swing.JFrame {
 
     private void jTable4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable4MouseClicked
         // TODO add your handling code here:
-        int i=jTable1.getSelectedRow();
-        TableModel model=jTable1.getModel();
+        int i=tableGV.getSelectedRow();
+        TableModel model=tableGV.getModel();
 
         //display seleted Row
         txtmakhoahoc.setText(model.getValueAt(i, 0).toString());
@@ -2100,12 +2093,12 @@ public class Main_Form extends javax.swing.JFrame {
 
     private void jTable7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable7MouseClicked
         // TODO add your handling code here:
-        int i=jTable1.getSelectedRow();
-        TableModel model=jTable1.getModel();
+        int i=tableGV.getSelectedRow();
+        TableModel model=tableGV.getModel();
 
         //hien thi
         txtmarl.setText(model.getValueAt(i, 0).toString());
-        txtmahs.setText(model.getValueAt(i, 1).toString());
+        F_HS_txtmahs.setText(model.getValueAt(i, 1).toString());
         txtmahk.setText(model.getValueAt(i, 2).toString());
         txtghichu.setText(model.getValueAt(i, 3).toString());
     }//GEN-LAST:event_jTable7MouseClicked
@@ -2125,6 +2118,179 @@ public class Main_Form extends javax.swing.JFrame {
     private void txtSearchRlActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchRlActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtSearchRlActionPerformed
+    public void showdataF_HS() {
+            HocSinhDAL hs = new HocSinhDAL();
+            ArrayList<HocSinhDTO> list = hs.BindTable();
+            String[] columnName = {"ID Học sinh", "Họ Tên", "Giới tính", "Ngày Sinh", "Quê Quán", "Địa chỉ", "Id Lớp học"};
+            Object[][] rows = new Object[list.size()][8];
+            for (int i = 0; i < list.size(); i++) {
+                rows[i][0] = list.get(i).getIdtablehocsinh();
+                rows[i][1] = list.get(i).getTenhocsinh();
+                rows[i][2] = list.get(i).getGioitinh();
+                rows[i][3] = list.get(i).getNgaysinh();
+                rows[i][4] = list.get(i).getQuequan();
+                rows[i][5] = list.get(i).getDiachi();
+                rows[i][6] = list.get(i).getIdtablelop();
+            }
+            TheModel2 model = new TheModel2(rows, columnName);
+            tableHS.setModel(model);
+            tableHS.setRowHeight(50);
+           // jTable1.getColumnModel().getColumn(7).setPreferredWidth(120);
+        }
+    private void F_HS_btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_F_HS_btnAddActionPerformed
+        // TODO add your handling code here:
+        String id = F_HS_txtmahs.getText();
+        String ten = F_HS_txttenhs.getText();
+        //gioi tinh
+        String gioitinh = null;
+        if (F_HS_nam.isSelected()) {
+            gioitinh = "nam";
+        }
+        if (F_HS_nu.isSelected()) {
+            gioitinh = "nữ";
+        }
+
+        //ngay sinh
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        String date = dateFormat.format(F_HS_txtNgaySinh.getDate());
+        //que quan
+        String quequan = F_HS_txtquequan.getText();
+        String diachi = F_HS_txtdiachi.getText();
+        String malop = txtmalop.getText();
+        HocSinhDTO hocSinhDTO = new HocSinhDTO(id, ten, gioitinh, date, quequan, diachi, malop);
+        HocSinhBLL hocSinhBLL = new HocSinhBLL();
+        if (hocSinhBLL.AddHS(hocSinhDTO) == true) {
+            TableModel model = tableGV.getModel();
+            showdataF_HS();
+            JOptionPane.showConfirmDialog(null, "Thành công");
+        }
+    }//GEN-LAST:event_F_HS_btnAddActionPerformed
+
+    private void txtSearchF_HSKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchF_HSKeyReleased
+        // TODO add your handling code here:
+        TableModel model = tableHS.getModel();
+        String search = txtSearchF_HS.getText();
+        TableRowSorter<TableModel> trl = new TableRowSorter<>(model);
+        tableHS.setRowSorter(trl);
+        trl.setRowFilter(RowFilter.regexFilter(search));
+    }//GEN-LAST:event_txtSearchF_HSKeyReleased
+
+    private void F_HS_btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_F_HS_btnUpdateActionPerformed
+        // TODO add your handling code here:
+        // TODO add your handling code here:
+        String id = F_HS_txtmahs.getText();
+        String ten = F_HS_txttenhs.getText();
+        //gioi tinh
+        String gioitinh = null;
+        if (F_HS_nam.isSelected()) {
+            gioitinh = "nam";
+        }
+        if (F_HS_nu.isSelected()) {
+            gioitinh = "nữ";
+        }
+
+        //ngay sinh
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        String date = dateFormat.format(F_HS_txtNgaySinh.getDate());
+        //que quan
+        String quequan = F_HS_txtquequan.getText();
+        String diachi = F_HS_txtdiachi.getText();
+        String malop = txtmalop.getText();
+        HocSinhDTO hocSinhDTO = new HocSinhDTO(id, ten, gioitinh, date, quequan, diachi, malop);
+        HocSinhBLL hocSinhBLL = new HocSinhBLL();
+        if (hocSinhBLL.UpdateHS(hocSinhDTO) == true) {
+                TableModel model = tableGV.getModel();
+                showdataF_HS();
+                JOptionPane.showConfirmDialog(null, "Thành công");
+        }else{
+            JOptionPane.showConfirmDialog(null, "Thất bại");
+        }
+
+    }//GEN-LAST:event_F_HS_btnUpdateActionPerformed
+
+    private void F_HS_btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_F_HS_btnDeleteActionPerformed
+        // TODO add your handling code here:
+        String id = F_HS_txtmahs.getText();
+        HocSinhBLL hocSinhBLL = new HocSinhBLL();
+
+        if (hocSinhBLL.DeleteHS(id) == true) {
+            TableModel model = tableGV.getModel();
+            showdataF_HS();
+            JOptionPane.showConfirmDialog(null, "Thành công");
+        }
+    }//GEN-LAST:event_F_HS_btnDeleteActionPerformed
+
+    public void showdataF_GV() {
+        GiaoVienDAL gv = new GiaoVienDAL();
+        ArrayList<GiaoVienDTO> list = gv.BindTable();
+        String[] columnName = {"idtablegiaovien", "tengiaovien", "ngaysinh", "gioitinh"};
+        Object[][] rows = new Object[list.size()][4];
+        for (int i = 0; i < list.size(); i++) {
+            rows[i][0] = list.get(i).getIdtablegiaovien();
+            rows[i][1] = list.get(i).getTengiaovien();
+            rows[i][2] = list.get(i).getNgaysinh();
+            rows[i][3] = list.get(i).getGioitinh();
+            
+        }
+        TheModel model = new TheModel(rows, columnName);
+        tableGV.setModel(model);
+        tableGV.setRowHeight(50);
+
+    }
+    private void F_GV_btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_F_GV_btnAddActionPerformed
+        // TODO add your handling code here:
+        String id = F_GV_txtidgiaovien.getText();
+        String ten = F_GV_txttengiaovien.getText();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        String date = dateFormat.format(F_GV_NgaySinh.getDate());
+        String gioitinh = null;
+        if (F_GV_nam.isSelected()) {
+            gioitinh = "nam";
+        }
+        if (F_GV_nu.isSelected()) {
+            gioitinh = "nữ";
+        }
+        GiaoVienDTO giaoVienDTO = new GiaoVienDTO(id, ten, date, gioitinh);
+        GiaoVienBLL giaoVienBLL = new GiaoVienBLL();
+        if (giaoVienBLL.AddGiaoVien(giaoVienDTO) == true) {
+            TableModel model = tableGV.getModel();
+            showdataF_GV();
+            JOptionPane.showConfirmDialog(null, "thành công");
+        }
+    }//GEN-LAST:event_F_GV_btnAddActionPerformed
+
+    private void txtSearchF_GVKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchF_GVKeyReleased
+        // TODO add your handling code here:
+        // TODO add your handling code here:
+        TableModel model = tableGV.getModel();
+        String search = txtSearchF_GV.getText();
+        TableRowSorter<TableModel> trl = new TableRowSorter<>(model);
+        tableGV.setRowSorter(trl);
+        trl.setRowFilter(RowFilter.regexFilter(search));
+    }//GEN-LAST:event_txtSearchF_GVKeyReleased
+
+    private void F_GV_btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_F_GV_btnUpdateActionPerformed
+        // TODO add your handling code here:
+        String id = F_GV_txtidgiaovien.getText();
+        String ten = F_GV_txttengiaovien.getText();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        String date = dateFormat.format(F_GV_NgaySinh.getDate());
+        String gioitinh = null;
+        if (F_GV_nam.isSelected()) {
+            gioitinh = "nam";
+        }
+        if (F_GV_nu.isSelected()) {
+            gioitinh = "nữ";
+        }
+        GiaoVienDTO giaoVienDTO = new GiaoVienDTO(id, ten, date, gioitinh);
+        GiaoVienBLL giaoVienBLL = new GiaoVienBLL();
+        //update neu co thay doi hinh anh
+            if (giaoVienBLL.UpdateGiaoVien(giaoVienDTO) == true) {
+                TableModel model = tableGV.getModel();
+                showdataF_GV();
+                JOptionPane.showConfirmDialog(null, "thành công");
+            }
+    }//GEN-LAST:event_F_GV_btnUpdateActionPerformed
 
     /**
      * @param args the command line arguments
@@ -2162,31 +2328,42 @@ public class Main_Form extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private com.toedter.calendar.JDateChooser F_GV_NgaySinh;
+    private javax.swing.JButton F_GV_btnAdd;
+    private javax.swing.JButton F_GV_btnDelete;
+    private javax.swing.JButton F_GV_btnUpdate;
+    private javax.swing.JRadioButton F_GV_nam;
+    private javax.swing.JRadioButton F_GV_nu;
+    private javax.swing.JTextField F_GV_txtidgiaovien;
+    private javax.swing.JTextField F_GV_txttengiaovien;
     private javax.swing.JPanel F_GiaoVien;
+    private javax.swing.JButton F_HS_btnAdd;
+    private javax.swing.JButton F_HS_btnDelete;
+    private javax.swing.JButton F_HS_btnUpdate;
+    private javax.swing.JRadioButton F_HS_nam;
+    private javax.swing.JRadioButton F_HS_nu;
+    private com.toedter.calendar.JDateChooser F_HS_txtNgaySinh;
+    private javax.swing.JTextField F_HS_txtdiachi;
+    private javax.swing.JTextField F_HS_txtmahs;
+    private javax.swing.JTextField F_HS_txtmalop;
+    private javax.swing.JTextField F_HS_txtquequan;
+    private javax.swing.JTextField F_HS_txttenhs;
     private javax.swing.JPanel F_HocSinh;
     private javax.swing.JPanel F_KhoaHoc;
     private javax.swing.JPanel F_LopHoc;
     private javax.swing.JPanel F_MonHoc;
     private javax.swing.JPanel F_RenLuyen;
-    private javax.swing.JButton btnadd;
-    private javax.swing.JButton btnaddgv;
     private javax.swing.JButton btnaddkh;
     private javax.swing.JButton btnaddlh;
     private javax.swing.JButton btnaddmh;
     private javax.swing.JButton btnaddrl;
-    private javax.swing.JButton btndelete;
-    private javax.swing.JButton btndeletegv;
     private javax.swing.JButton btndeletekh;
     private javax.swing.JButton btndeletelh;
     private javax.swing.JButton btndeletelh1;
     private javax.swing.JButton btndeletemh;
-    private javax.swing.JButton btnupdate;
-    private javax.swing.JButton btnupdategv;
     private javax.swing.JButton btnupdatelh;
     private javax.swing.JButton btnupdatelrl;
     private javax.swing.JButton btnupdatemh;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
-    private com.toedter.calendar.JDateChooser jDateChooser2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -2244,15 +2421,12 @@ public class Main_Form extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane8;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     private javax.swing.JTable jTable3;
     private javax.swing.JTable jTable4;
     private javax.swing.JTable jTable7;
     private javax.swing.JLabel logo;
     private javax.swing.JPanel main_content;
-    private javax.swing.JRadioButton nam;
-    private javax.swing.JRadioButton nam1;
     private javax.swing.JPanel navBar;
     private javax.swing.JPanel navBar_bar;
     private javax.swing.JPanel navBar_bar1;
@@ -2260,8 +2434,6 @@ public class Main_Form extends javax.swing.JFrame {
     private javax.swing.JButton nav_item_qlhs;
     private javax.swing.JButton nav_item_setting;
     private javax.swing.JButton nav_item_tk;
-    private javax.swing.JRadioButton nu;
-    private javax.swing.JRadioButton nu1;
     private javax.swing.JPanel qlhs_content;
     private javax.swing.JPanel quanLyDiem;
     private javax.swing.JPanel quanLyHS;
@@ -2271,31 +2443,25 @@ public class Main_Form extends javax.swing.JFrame {
     private javax.swing.JButton sub_qlhs_lh;
     private javax.swing.JButton sub_qlhs_mh;
     private javax.swing.JButton sub_qlhs_rl;
+    private javax.swing.JTable tableGV;
     private javax.swing.JTable tableHS;
     private javax.swing.JPanel thongKe;
-    private javax.swing.JTextField txtSearchGv;
-    private javax.swing.JTextField txtSearchHs;
+    private javax.swing.JTextField txtSearchF_GV;
+    private javax.swing.JTextField txtSearchF_HS;
     private javax.swing.JTextField txtSearchKh;
     private javax.swing.JTextField txtSearchLh;
     private javax.swing.JTextField txtSearchMh;
     private javax.swing.JTextField txtSearchRl;
-    private javax.swing.JTextField txtdiachi;
     private javax.swing.JTextField txtghichu;
-    private javax.swing.JTextField txtidgiaovien;
     private javax.swing.JTextField txtmagv1;
     private javax.swing.JTextField txtmahk;
-    private javax.swing.JTextField txtmahs;
     private javax.swing.JTextField txtmakhoahoc;
     private javax.swing.JTextField txtmakhoahoc1;
     private javax.swing.JTextField txtmalop;
-    private javax.swing.JTextField txtmalop1;
     private javax.swing.JTextField txtmamonhoc;
     private javax.swing.JTextField txtmarl;
-    private javax.swing.JTextField txtquequan;
     private javax.swing.JTextField txtsiso;
     private javax.swing.JTextField txtsotiet;
-    private javax.swing.JTextField txttengiaovien;
-    private javax.swing.JTextField txttenhs;
     private javax.swing.JTextField txttenlop;
     private javax.swing.JTextField txttenlop1;
     private javax.swing.JTextField txttenmonhoc;

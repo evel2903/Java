@@ -17,9 +17,8 @@ public class HocSinhDTO {
     public String quequan;
     public String diachi;
     public String idtablelop;
-    public byte [] img;
 
-    public HocSinhDTO(String idtablehocsinh, String tenhocsinh, String gioitinh, String ngaysinh, String quequan, String diachi, String idtablelop, byte[] img) {
+    public HocSinhDTO(String idtablehocsinh, String tenhocsinh, String gioitinh, String ngaysinh, String quequan, String diachi, String idtablelop) {
         this.idtablehocsinh = idtablehocsinh;
         this.tenhocsinh = tenhocsinh;
         this.gioitinh = gioitinh;
@@ -27,7 +26,6 @@ public class HocSinhDTO {
         this.quequan = quequan;
         this.diachi = diachi;
         this.idtablelop = idtablelop;
-        this.img = img;
     }
 
     public String getIdtablehocsinh() {
@@ -86,12 +84,5 @@ public class HocSinhDTO {
         this.idtablelop = idtablelop;
     }
 
-    public byte[] getImg() {
-        return img;
-    }
-
-    public void setImg(byte[] img) {
-        this.img = img;
-    }
     
 }

@@ -29,7 +29,7 @@ public class GiaoVienDAL {
 
     public boolean ValuesAddGiaovien(GiaoVienDTO giaovienDTO) {
         int check = 0;
-        String sql = "INSERT INTO `doan`.`tablegiaovien` (`idtablegiaovien`, `tengiaovien`, `ngaysinh`, `gioitinh`, `img`) VALUES (?, ?, ?, ?, ?);";
+        String sql = "INSERT INTO `doan`.`tablegiaovien` (`idtablegiaovien`, `tengiaovien`, `ngaysinh`, `gioitinh`) VALUES (?, ?, ?, ?);";
 
         try {
             conUtil = new ConnectionUtil();
@@ -41,7 +41,6 @@ public class GiaoVienDAL {
             preparedStatement.setString(2, giaovienDTO.getTengiaovien());
             preparedStatement.setString(3, giaovienDTO.getNgaysinh());
             preparedStatement.setString(4, giaovienDTO.getGioitinh());
-            preparedStatement.setBytes(5, giaovienDTO.getImg());
 
             check = preparedStatement.executeUpdate();
 
@@ -82,7 +81,7 @@ public class GiaoVienDAL {
 
     public boolean ValuesUpdateGiaovien(GiaoVienDTO giaovienDTO){
         int check=0;
-        String sql="UPDATE `doan`.`tablegiaovien` SET `tengiaovien` = ?, `ngaysinh` = ?, `gioitinh` = ?, `img` = ? WHERE (`idtablegiaovien` = ?);";
+        String sql="UPDATE `doan`.`tablegiaovien` SET `tengiaovien` = ?, `ngaysinh` = ?, `gioitinh` = ? WHERE (`idtablegiaovien` = ?);";
         
         try {
             conUtil = new ConnectionUtil();
@@ -93,7 +92,6 @@ public class GiaoVienDAL {
             preparedStatement.setString(1, giaovienDTO.getTengiaovien());
             preparedStatement.setString(2, giaovienDTO.getNgaysinh());
             preparedStatement.setString(3, giaovienDTO.getGioitinh());
-            preparedStatement.setBytes(4, giaovienDTO.getImg());
             preparedStatement.setString(5, giaovienDTO.getIdtablegiaovien());
             
             check = preparedStatement.executeUpdate();
@@ -164,8 +162,7 @@ public class GiaoVienDAL {
                                     rs.getString("idtablegiaovien"),
                                     rs.getString("tengiaovien"),
                                     rs.getString("ngaysinh"),
-                                    rs.getString("gioitinh"),
-                                    rs.getBytes("img")
+                                    rs.getString("gioitinh")
                                 );
                     list.add(giaoVienDTO);
                 }

@@ -43,8 +43,6 @@ public class LopDAL {
 
         } catch (SQLException e) {
             JOptionPane.showConfirmDialog(null, "lỗi kết nối lóp học");
-        } catch (ClassNotFoundException e) {
-            JOptionPane.showConfirmDialog(null, "lỗi kết nối lóp học");
         } finally {
             try {
                 con.close();

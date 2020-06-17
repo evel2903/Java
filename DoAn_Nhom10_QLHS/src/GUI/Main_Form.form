@@ -242,7 +242,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="navBar_bar1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="qlhs_content" pref="804" max="32767" attributes="0"/>
+                      <Component id="qlhs_content" pref="849" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -490,15 +490,15 @@
                                                       <Group type="102" attributes="0">
                                                           <Group type="103" groupAlignment="0" attributes="0">
                                                               <Group type="102" attributes="0">
-                                                                  <Component id="nam" min="-2" max="-2" attributes="0"/>
+                                                                  <Component id="F_HS_nam" min="-2" max="-2" attributes="0"/>
                                                                   <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
-                                                                  <Component id="nu" min="-2" max="-2" attributes="0"/>
+                                                                  <Component id="F_HS_nu" min="-2" max="-2" attributes="0"/>
                                                               </Group>
-                                                              <Component id="txtmahs" min="-2" pref="390" max="-2" attributes="0"/>
+                                                              <Component id="F_HS_txtmahs" min="-2" pref="390" max="-2" attributes="0"/>
                                                           </Group>
                                                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                                       </Group>
-                                                      <Component id="txttenhs" max="32767" attributes="0"/>
+                                                      <Component id="F_HS_txttenhs" max="32767" attributes="0"/>
                                                   </Group>
                                               </Group>
                                               <Group type="102" alignment="0" attributes="0">
@@ -512,23 +512,23 @@
                                                       <Group type="102" attributes="0">
                                                           <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                                                           <Group type="103" groupAlignment="0" attributes="0">
-                                                              <Component id="txtquequan" max="32767" attributes="0"/>
-                                                              <Component id="txtdiachi" alignment="0" max="32767" attributes="0"/>
-                                                              <Component id="txtmalop1" alignment="0" max="32767" attributes="0"/>
+                                                              <Component id="F_HS_txtquequan" max="32767" attributes="0"/>
+                                                              <Component id="F_HS_txtdiachi" alignment="0" max="32767" attributes="0"/>
+                                                              <Component id="F_HS_txtmalop" alignment="0" max="32767" attributes="0"/>
                                                           </Group>
                                                       </Group>
                                                       <Group type="102" alignment="0" attributes="0">
                                                           <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
-                                                          <Component id="jDateChooser1" max="32767" attributes="0"/>
+                                                          <Component id="F_HS_txtNgaySinh" max="32767" attributes="0"/>
                                                       </Group>
                                                   </Group>
                                               </Group>
                                               <Group type="102" alignment="1" attributes="0">
-                                                  <Component id="btnadd" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="F_HS_btnAdd" min="-2" max="-2" attributes="0"/>
                                                   <EmptySpace max="32767" attributes="0"/>
-                                                  <Component id="btnupdate" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="F_HS_btnUpdate" min="-2" max="-2" attributes="0"/>
                                                   <EmptySpace min="-2" pref="83" max="-2" attributes="0"/>
-                                                  <Component id="btndelete" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="F_HS_btnDelete" min="-2" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
                                       </Group>
@@ -545,44 +545,44 @@
                                   <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="jLabel13" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
-                                      <Component id="txtmahs" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                                      <Component id="F_HS_txtmahs" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="jLabel7" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
-                                      <Component id="txttenhs" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                                      <Component id="F_HS_txttenhs" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="jLabel14" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
-                                      <Component id="nam" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
-                                      <Component id="nu" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
+                                      <Component id="F_HS_nam" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                                      <Component id="F_HS_nu" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="jLabel15" min="-2" pref="40" max="-2" attributes="0"/>
-                                      <Component id="jDateChooser1" min="-2" pref="31" max="-2" attributes="0"/>
+                                      <Component id="F_HS_txtNgaySinh" min="-2" pref="31" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="jLabel16" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
-                                      <Component id="txtquequan" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                                      <Component id="F_HS_txtquequan" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="jLabel17" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
-                                      <Component id="txtdiachi" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                                      <Component id="F_HS_txtdiachi" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="jLabel18" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
-                                      <Component id="txtmalop1" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                                      <Component id="F_HS_txtmalop" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace pref="74" max="32767" attributes="0"/>
+                                  <EmptySpace pref="119" max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="btnadd" min="-2" max="-2" attributes="0"/>
-                                      <Component id="btndelete" min="-2" max="-2" attributes="0"/>
-                                      <Component id="btnupdate" min="-2" max="-2" attributes="0"/>
+                                      <Component id="F_HS_btnAdd" min="-2" max="-2" attributes="0"/>
+                                      <Component id="F_HS_btnDelete" min="-2" max="-2" attributes="0"/>
+                                      <Component id="F_HS_btnUpdate" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
                               </Group>
@@ -653,10 +653,13 @@
                             <Property name="text" type="java.lang.String" value="M&#xe3; l&#x1edb;p"/>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JTextField" name="txtmahs">
+                        <Component class="javax.swing.JTextField" name="F_HS_txtmahs">
                           <Properties>
+                            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                              <Color blue="ff" green="cc" red="99" type="rgb"/>
+                            </Property>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                              <Font name="Arial Narrow" size="16" style="0"/>
+                              <Font name="Arial" size="16" style="0"/>
                             </Property>
                             <Property name="horizontalAlignment" type="int" value="0"/>
                             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -666,37 +669,51 @@
                             </Property>
                           </Properties>
                           <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtmahsActionPerformed"/>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="F_HS_txtmahsActionPerformed"/>
                           </Events>
                         </Component>
-                        <Component class="javax.swing.JRadioButton" name="nam">
+                        <Component class="javax.swing.JRadioButton" name="F_HS_nam">
                           <Properties>
+                            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                              <Color blue="ff" green="cc" red="99" type="rgb"/>
+                            </Property>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Arial" size="16" style="0"/>
                             </Property>
                             <Property name="text" type="java.lang.String" value="nam"/>
                           </Properties>
                           <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="namActionPerformed"/>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="F_HS_namActionPerformed"/>
                           </Events>
                         </Component>
-                        <Component class="javax.swing.JRadioButton" name="nu">
+                        <Component class="javax.swing.JRadioButton" name="F_HS_nu">
                           <Properties>
+                            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                              <Color blue="ff" green="cc" red="99" type="rgb"/>
+                            </Property>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Arial" size="16" style="0"/>
                             </Property>
                             <Property name="text" type="java.lang.String" value="N&#x1eef;"/>
                           </Properties>
                           <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nuActionPerformed"/>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="F_HS_nuActionPerformed"/>
                           </Events>
                         </Component>
-                        <Component class="com.toedter.calendar.JDateChooser" name="jDateChooser1">
-                        </Component>
-                        <Component class="javax.swing.JTextField" name="txttenhs">
+                        <Component class="com.toedter.calendar.JDateChooser" name="F_HS_txtNgaySinh">
                           <Properties>
+                            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                              <Color blue="ff" green="cc" red="99" type="rgb"/>
+                            </Property>
+                          </Properties>
+                        </Component>
+                        <Component class="javax.swing.JTextField" name="F_HS_txttenhs">
+                          <Properties>
+                            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                              <Color blue="ff" green="cc" red="99" type="rgb"/>
+                            </Property>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                              <Font name="Arial Narrow" size="16" style="0"/>
+                              <Font name="Arial" size="16" style="0"/>
                             </Property>
                             <Property name="horizontalAlignment" type="int" value="0"/>
                             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -706,10 +723,13 @@
                             </Property>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JTextField" name="txtquequan">
+                        <Component class="javax.swing.JTextField" name="F_HS_txtquequan">
                           <Properties>
+                            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                              <Color blue="ff" green="cc" red="99" type="rgb"/>
+                            </Property>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                              <Font name="Arial Narrow" size="16" style="0"/>
+                              <Font name="Arial" size="16" style="0"/>
                             </Property>
                             <Property name="horizontalAlignment" type="int" value="0"/>
                             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -719,10 +739,13 @@
                             </Property>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JTextField" name="txtdiachi">
+                        <Component class="javax.swing.JTextField" name="F_HS_txtdiachi">
                           <Properties>
+                            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                              <Color blue="ff" green="cc" red="99" type="rgb"/>
+                            </Property>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                              <Font name="Arial Narrow" size="16" style="0"/>
+                              <Font name="Arial" size="16" style="0"/>
                             </Property>
                             <Property name="horizontalAlignment" type="int" value="0"/>
                             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -732,10 +755,13 @@
                             </Property>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JTextField" name="txtmalop1">
+                        <Component class="javax.swing.JTextField" name="F_HS_txtmalop">
                           <Properties>
+                            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                              <Color blue="ff" green="cc" red="99" type="rgb"/>
+                            </Property>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                              <Font name="Arial Narrow" size="16" style="0"/>
+                              <Font name="Arial" size="16" style="0"/>
                             </Property>
                             <Property name="horizontalAlignment" type="int" value="0"/>
                             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -745,7 +771,7 @@
                             </Property>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JButton" name="btnadd">
+                        <Component class="javax.swing.JButton" name="F_HS_btnAdd">
                           <Properties>
                             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                               <Image iconType="3" name="/images/add.png"/>
@@ -757,8 +783,11 @@
                               <Color id="Hand Cursor"/>
                             </Property>
                           </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="F_HS_btnAddActionPerformed"/>
+                          </Events>
                         </Component>
-                        <Component class="javax.swing.JButton" name="btnupdate">
+                        <Component class="javax.swing.JButton" name="F_HS_btnUpdate">
                           <Properties>
                             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                               <Image iconType="3" name="/images/update.png"/>
@@ -770,8 +799,11 @@
                               <Color id="Hand Cursor"/>
                             </Property>
                           </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="F_HS_btnUpdateActionPerformed"/>
+                          </Events>
                         </Component>
-                        <Component class="javax.swing.JButton" name="btndelete">
+                        <Component class="javax.swing.JButton" name="F_HS_btnDelete">
                           <Properties>
                             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                               <Image iconType="3" name="/images/del.png"/>
@@ -783,6 +815,9 @@
                               <Color id="Hand Cursor"/>
                             </Property>
                           </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="F_HS_btnDeleteActionPerformed"/>
+                          </Events>
                         </Component>
                       </SubComponents>
                     </Container>
@@ -802,9 +837,9 @@
                                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                           <Component id="jLabel4" min="-2" pref="46" max="-2" attributes="0"/>
                                           <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                                          <Component id="txtSearchHs" min="-2" pref="200" max="-2" attributes="0"/>
+                                          <Component id="txtSearchF_HS" min="-2" pref="200" max="-2" attributes="0"/>
                                       </Group>
-                                      <Component id="jScrollPane1" alignment="0" pref="1004" max="32767" attributes="0"/>
+                                      <Component id="jScrollPane1" alignment="0" pref="1001" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                               </Group>
@@ -813,9 +848,9 @@
                         <DimensionLayout dim="1">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="1" attributes="0">
-                                  <EmptySpace pref="15" max="32767" attributes="0"/>
+                                  <EmptySpace pref="60" max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="txtSearchHs" max="32767" attributes="0"/>
+                                      <Component id="txtSearchF_HS" max="32767" attributes="0"/>
                                       <Component id="jLabel4" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
@@ -826,7 +861,7 @@
                         </DimensionLayout>
                       </Layout>
                       <SubComponents>
-                        <Component class="javax.swing.JTextField" name="txtSearchHs">
+                        <Component class="javax.swing.JTextField" name="txtSearchF_HS">
                           <Properties>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Arial" size="18" style="2"/>
@@ -834,7 +869,6 @@
                             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="c0" green="c0" id="lightGray" palette="1" red="c0" type="palette"/>
                             </Property>
-                            <Property name="text" type="java.lang.String" value="Search"/>
                             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                               <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
                                 <MatteColorBorder bottom="1" left="0" right="0" top="0"/>
@@ -842,9 +876,7 @@
                             </Property>
                           </Properties>
                           <Events>
-                            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtSearchHsFocusGained"/>
-                            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtSearchHsFocusLost"/>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtSearchHsActionPerformed"/>
+                            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtSearchF_HSKeyReleased"/>
                           </Events>
                         </Component>
                         <Component class="javax.swing.JLabel" name="jLabel4">
@@ -920,7 +952,7 @@
                     </DimensionLayout>
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jPanel4" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jPanel4" alignment="0" pref="809" max="32767" attributes="0"/>
                           <Component id="jPanel3" alignment="0" max="32767" attributes="0"/>
                       </Group>
                     </DimensionLayout>
@@ -942,7 +974,7 @@
                                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                           <Component id="jLabel5" min="-2" pref="46" max="-2" attributes="0"/>
                                           <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                                          <Component id="txtSearchGv" min="-2" pref="200" max="-2" attributes="0"/>
+                                          <Component id="txtSearchF_GV" min="-2" pref="200" max="-2" attributes="0"/>
                                       </Group>
                                       <Component id="jScrollPane2" alignment="0" pref="1004" max="32767" attributes="0"/>
                                   </Group>
@@ -955,7 +987,7 @@
                               <Group type="102" alignment="1" attributes="0">
                                   <EmptySpace max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="txtSearchGv" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="txtSearchF_GV" alignment="0" max="32767" attributes="0"/>
                                       <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
@@ -973,7 +1005,7 @@
 
                           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                           <SubComponents>
-                            <Component class="javax.swing.JTable" name="jTable1">
+                            <Component class="javax.swing.JTable" name="tableGV">
                               <Properties>
                                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                                   <Table columnCount="4" rowCount="0">
@@ -988,12 +1020,12 @@
                                 </Property>
                               </Properties>
                               <Events>
-                                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jTable1MouseClicked"/>
+                                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tableGVMouseClicked"/>
                               </Events>
                             </Component>
                           </SubComponents>
                         </Container>
-                        <Component class="javax.swing.JTextField" name="txtSearchGv">
+                        <Component class="javax.swing.JTextField" name="txtSearchF_GV">
                           <Properties>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Arial" size="18" style="2"/>
@@ -1001,7 +1033,6 @@
                             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="c0" green="c0" id="lightGray" palette="1" red="c0" type="palette"/>
                             </Property>
-                            <Property name="text" type="java.lang.String" value="Search"/>
                             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                               <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
                                 <MatteColorBorder bottom="1" left="0" right="0" top="0"/>
@@ -1009,9 +1040,7 @@
                             </Property>
                           </Properties>
                           <Events>
-                            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtSearchGvFocusGained"/>
-                            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtSearchGvFocusLost"/>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtSearchGvActionPerformed"/>
+                            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtSearchF_GVKeyReleased"/>
                           </Events>
                         </Component>
                         <Component class="javax.swing.JLabel" name="jLabel5">
@@ -1052,11 +1081,11 @@
                                           <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Group type="102" attributes="0">
-                                                  <Component id="btnaddgv" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="F_GV_btnAdd" min="-2" max="-2" attributes="0"/>
                                                   <EmptySpace min="-2" pref="85" max="-2" attributes="0"/>
-                                                  <Component id="btnupdategv" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="F_GV_btnUpdate" min="-2" max="-2" attributes="0"/>
                                                   <EmptySpace max="32767" attributes="0"/>
-                                                  <Component id="btndeletegv" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="F_GV_btnDelete" min="-2" max="-2" attributes="0"/>
                                               </Group>
                                               <Group type="102" alignment="0" attributes="0">
                                                   <Group type="103" groupAlignment="0" attributes="0">
@@ -1067,19 +1096,19 @@
                                                   <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                                                   <Group type="103" groupAlignment="0" attributes="0">
                                                       <Group type="102" alignment="0" attributes="0">
-                                                          <Component id="nam1" min="-2" max="-2" attributes="0"/>
+                                                          <Component id="F_GV_nam" min="-2" max="-2" attributes="0"/>
                                                           <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
-                                                          <Component id="nu1" min="-2" max="-2" attributes="0"/>
+                                                          <Component id="F_GV_nu" min="-2" max="-2" attributes="0"/>
                                                           <EmptySpace min="0" pref="245" max="32767" attributes="0"/>
                                                       </Group>
-                                                      <Component id="txttengiaovien" alignment="0" max="32767" attributes="0"/>
-                                                      <Component id="txtidgiaovien" alignment="0" max="32767" attributes="0"/>
+                                                      <Component id="F_GV_txttengiaovien" alignment="0" max="32767" attributes="0"/>
+                                                      <Component id="F_GV_txtidgiaovien" alignment="0" max="32767" attributes="0"/>
                                                   </Group>
                                               </Group>
                                               <Group type="102" alignment="0" attributes="0">
                                                   <Component id="jLabel21" min="-2" max="-2" attributes="0"/>
                                                   <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
-                                                  <Component id="jDateChooser2" max="32767" attributes="0"/>
+                                                  <Component id="F_GV_NgaySinh" max="32767" attributes="0"/>
                                               </Group>
                                           </Group>
                                       </Group>
@@ -1096,31 +1125,31 @@
                                   <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="jLabel19" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
-                                      <Component id="txtidgiaovien" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                                      <Component id="F_GV_txtidgiaovien" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="jLabel9" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
-                                      <Component id="txttengiaovien" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                                      <Component id="F_GV_txttengiaovien" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="jLabel20" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
-                                      <Component id="nam1" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
-                                      <Component id="nu1" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
+                                      <Component id="F_GV_nam" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                                      <Component id="F_GV_nu" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="jLabel21" alignment="0" min="-2" pref="40" max="-2" attributes="0"/>
-                                      <Component id="jDateChooser2" alignment="0" min="-2" pref="31" max="-2" attributes="0"/>
+                                      <Component id="F_GV_NgaySinh" alignment="0" min="-2" pref="31" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="btnupdategv" min="-2" max="-2" attributes="0"/>
-                                      <Component id="btnaddgv" min="-2" max="-2" attributes="0"/>
-                                      <Component id="btndeletegv" min="-2" max="-2" attributes="0"/>
+                                      <Component id="F_GV_btnUpdate" min="-2" max="-2" attributes="0"/>
+                                      <Component id="F_GV_btnAdd" min="-2" max="-2" attributes="0"/>
+                                      <Component id="F_GV_btnDelete" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace pref="330" max="32767" attributes="0"/>
+                                  <EmptySpace pref="375" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -1165,10 +1194,13 @@
                             <Property name="text" type="java.lang.String" value="Ng&#xe0;y sinh"/>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JTextField" name="txtidgiaovien">
+                        <Component class="javax.swing.JTextField" name="F_GV_txtidgiaovien">
                           <Properties>
+                            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                              <Color blue="ff" green="cc" red="99" type="rgb"/>
+                            </Property>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                              <Font name="Arial Narrow" size="16" style="0"/>
+                              <Font name="Arial" size="16" style="0"/>
                             </Property>
                             <Property name="horizontalAlignment" type="int" value="0"/>
                             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -1178,37 +1210,46 @@
                             </Property>
                           </Properties>
                           <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtidgiaovienActionPerformed"/>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="F_GV_txtidgiaovienActionPerformed"/>
                           </Events>
                         </Component>
-                        <Component class="javax.swing.JRadioButton" name="nam1">
+                        <Component class="javax.swing.JRadioButton" name="F_GV_nam">
                           <Properties>
+                            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                              <Color blue="ff" green="cc" red="99" type="rgb"/>
+                            </Property>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Arial" size="16" style="0"/>
                             </Property>
                             <Property name="text" type="java.lang.String" value="nam"/>
                           </Properties>
                           <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nam1ActionPerformed"/>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="F_GV_namActionPerformed"/>
                           </Events>
                         </Component>
-                        <Component class="javax.swing.JRadioButton" name="nu1">
+                        <Component class="javax.swing.JRadioButton" name="F_GV_nu">
                           <Properties>
+                            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                              <Color blue="ff" green="cc" red="99" type="rgb"/>
+                            </Property>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Arial" size="16" style="0"/>
                             </Property>
                             <Property name="text" type="java.lang.String" value="N&#x1eef;"/>
                           </Properties>
                           <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nu1ActionPerformed"/>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="F_GV_nuActionPerformed"/>
                           </Events>
                         </Component>
-                        <Component class="com.toedter.calendar.JDateChooser" name="jDateChooser2">
+                        <Component class="com.toedter.calendar.JDateChooser" name="F_GV_NgaySinh">
                         </Component>
-                        <Component class="javax.swing.JTextField" name="txttengiaovien">
+                        <Component class="javax.swing.JTextField" name="F_GV_txttengiaovien">
                           <Properties>
+                            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                              <Color blue="ff" green="cc" red="99" type="rgb"/>
+                            </Property>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                              <Font name="Arial Narrow" size="16" style="0"/>
+                              <Font name="Arial" size="16" style="0"/>
                             </Property>
                             <Property name="horizontalAlignment" type="int" value="0"/>
                             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -1218,7 +1259,7 @@
                             </Property>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JButton" name="btnaddgv">
+                        <Component class="javax.swing.JButton" name="F_GV_btnAdd">
                           <Properties>
                             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                               <Image iconType="3" name="/images/add.png"/>
@@ -1230,8 +1271,11 @@
                               <Color id="Hand Cursor"/>
                             </Property>
                           </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="F_GV_btnAddActionPerformed"/>
+                          </Events>
                         </Component>
-                        <Component class="javax.swing.JButton" name="btnupdategv">
+                        <Component class="javax.swing.JButton" name="F_GV_btnUpdate">
                           <Properties>
                             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                               <Image iconType="3" name="/images/update.png"/>
@@ -1243,8 +1287,11 @@
                               <Color id="Hand Cursor"/>
                             </Property>
                           </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="F_GV_btnUpdateActionPerformed"/>
+                          </Events>
                         </Component>
-                        <Component class="javax.swing.JButton" name="btndeletegv">
+                        <Component class="javax.swing.JButton" name="F_GV_btnDelete">
                           <Properties>
                             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                               <Image iconType="3" name="/images/del.png"/>
@@ -1257,7 +1304,7 @@
                             </Property>
                           </Properties>
                           <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btndeletegvActionPerformed"/>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="F_GV_btnDeleteActionPerformed"/>
                           </Events>
                         </Component>
                       </SubComponents>
@@ -1291,7 +1338,7 @@
                     </DimensionLayout>
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jPanel6" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jPanel6" alignment="0" pref="809" max="32767" attributes="0"/>
                           <Component id="jPanel5" alignment="0" max="32767" attributes="0"/>
                       </Group>
                     </DimensionLayout>
@@ -1531,7 +1578,7 @@
                                       <Component id="btnaddlh" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="btndeletelh" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace pref="221" max="32767" attributes="0"/>
+                                  <EmptySpace pref="266" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -1726,7 +1773,7 @@
                     </DimensionLayout>
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jPanel8" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jPanel8" alignment="0" pref="809" max="32767" attributes="0"/>
                           <Component id="jPanel7" alignment="0" max="32767" attributes="0"/>
                       </Group>
                     </DimensionLayout>
@@ -1912,7 +1959,7 @@
                                       <Component id="btnaddmh" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="btndeletemh" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace pref="412" max="32767" attributes="0"/>
+                                  <EmptySpace pref="457" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -2321,7 +2368,7 @@
                     </DimensionLayout>
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jPanel12" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jPanel12" alignment="0" pref="809" max="32767" attributes="0"/>
                           <Component id="jPanel11" alignment="0" max="32767" attributes="0"/>
                       </Group>
                     </DimensionLayout>
@@ -2518,7 +2565,7 @@
                                       <Component id="btnaddrl" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="btndeletelh1" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace pref="331" max="32767" attributes="0"/>
+                                  <EmptySpace pref="376" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -2704,7 +2751,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="340" max="-2" attributes="0"/>
                       <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="501" max="32767" attributes="0"/>
+                      <EmptySpace pref="546" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>

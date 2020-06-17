@@ -60,19 +60,11 @@ public class F_GiaoVien extends javax.swing.JFrame {
             rows[i][1] = list.get(i).getTengiaovien();
             rows[i][2] = list.get(i).getNgaysinh();
             rows[i][3] = list.get(i).getGioitinh();
-//            if (list.get(i).getImg() != null) {
-//                ImageIcon image = new ImageIcon(new ImageIcon(list.get(i).getImg()).getImage()
-//                        .getScaledInstance(150, 120, Image.SCALE_SMOOTH));
-//                rows[i][4] = image;
-//            } else {
-//                rows[i][4] = null;
-//            }
             
         }
         TheModel model = new TheModel(rows, columnName);
-        jTable1.setModel(model);
-        jTable1.setRowHeight(120);
-//        jTable1.getColumnModel().getColumn(4).setPreferredWidth(150);
+        tableGV.setModel(model);
+        tableGV.setRowHeight(120);
 
     }
 
@@ -94,7 +86,7 @@ public class F_GiaoVien extends javax.swing.JFrame {
         nam = new javax.swing.JRadioButton();
         nu = new javax.swing.JRadioButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tableGV = new javax.swing.JTable();
         jLabel5 = new javax.swing.JLabel();
         txtsearch = new javax.swing.JTextField();
         btnaddgv = new javax.swing.JButton();
@@ -128,7 +120,7 @@ public class F_GiaoVien extends javax.swing.JFrame {
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tableGV.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -136,12 +128,12 @@ public class F_GiaoVien extends javax.swing.JFrame {
                 "Mã Giáo Viên", "Họ Tên", "Ngày Sinh", "Giới Tính"
             }
         ));
-        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+        tableGV.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTable1MouseClicked(evt);
+                tableGVMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tableGV);
 
         jLabel5.setText("Tìm Kiếm");
 
@@ -322,7 +314,7 @@ public class F_GiaoVien extends javax.swing.JFrame {
         GiaoVienDTO giaoVienDTO = new GiaoVienDTO(id, ten, date, gioitinh, photo1);
         GiaoVienBLL giaoVienBLL = new GiaoVienBLL();
         if (giaoVienBLL.AddGiaoVien(giaoVienDTO) == true) {
-            TableModel model = jTable1.getModel();
+            TableModel model = tableGV.getModel();
             showdata();
             JOptionPane.showConfirmDialog(null, "thành công");
         }
@@ -349,17 +341,17 @@ public class F_GiaoVien extends javax.swing.JFrame {
         GiaoVienDTO giaoVienDTO = new GiaoVienDTO(id, null, null, null, null);
         GiaoVienBLL giaoVienBLL = new GiaoVienBLL();
         if (giaoVienBLL.DEL(giaoVienDTO) == true) {
-            TableModel model = jTable1.getModel();
+            TableModel model = tableGV.getModel();
             showdata();
             JOptionPane.showConfirmDialog(null, "thành công");
 
         }
     }//GEN-LAST:event_btndeletegvActionPerformed
 
-    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+    private void tableGVMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableGVMouseClicked
         // TODO add your handling code here:
-        int i = jTable1.getSelectedRow();
-        TableModel model = jTable1.getModel();
+        int i = tableGV.getSelectedRow();
+        TableModel model = tableGV.getModel();
         //lấy mã giáo viên
         txtidgiaovien.setText(model.getValueAt(i, 0).toString());
         //lấy họ tên giáo viên
@@ -386,20 +378,20 @@ public class F_GiaoVien extends javax.swing.JFrame {
         }
         // lấy hình ảnh
 
-        if (jTable1.getValueAt(i, 4) != null) {
-            ImageIcon image1 = (ImageIcon) jTable1.getValueAt(i, 4);
+        if (tableGV.getValueAt(i, 4) != null) {
+            ImageIcon image1 = (ImageIcon) tableGV.getValueAt(i, 4);
             Image image2 = image1.getImage().getScaledInstance(labelhienthihinh.getWidth(), labelhienthihinh.getHeight(), Image.SCALE_SMOOTH);
             ImageIcon image3 = new ImageIcon(image2);
             labelhienthihinh.setIcon(image3);
             // test laays hinh khi click vao table
             photo1=null;
 
-        } else if (jTable1.getValueAt(i, 4) == null) {
+        } else if (tableGV.getValueAt(i, 4) == null) {
             labelhienthihinh.setIcon(null);
         }
 
 
-    }//GEN-LAST:event_jTable1MouseClicked
+    }//GEN-LAST:event_tableGVMouseClicked
 
     //update giáo viên
     private void btnupdategvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnupdategvActionPerformed
@@ -420,7 +412,7 @@ public class F_GiaoVien extends javax.swing.JFrame {
         //update neu co thay doi hinh anh
         if (photo1 != null) {
             if (giaoVienBLL.UpdateGiaoVien(giaoVienDTO) == true) {
-                TableModel model = jTable1.getModel();
+                TableModel model = tableGV.getModel();
                 showdata();
                 JOptionPane.showConfirmDialog(null, "thành công");
             }
@@ -428,7 +420,7 @@ public class F_GiaoVien extends javax.swing.JFrame {
         //update neu k thay doi hinh
         if (photo1 == null) {
             if (giaoVienBLL.UpdateGiaoVien2(giaoVienDTO) == true) {
-                TableModel model = jTable1.getModel();
+                TableModel model = tableGV.getModel();
                 showdata();
                 JOptionPane.showConfirmDialog(null, "thành công");
             }
@@ -438,10 +430,10 @@ public class F_GiaoVien extends javax.swing.JFrame {
     private void txtsearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtsearchKeyReleased
         // TODO add your handling code her1e:
 //       
-        TableModel model = jTable1.getModel();
+        TableModel model = tableGV.getModel();
         String search = txtsearch.getText();
         TableRowSorter<TableModel> trl = new TableRowSorter<>(model);
-        jTable1.setRowSorter(trl);
+        tableGV.setRowSorter(trl);
         trl.setRowFilter(RowFilter.regexFilter(search));
     }//GEN-LAST:event_txtsearchKeyReleased
 
@@ -496,10 +488,10 @@ public class F_GiaoVien extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel labelhienthihinh;
     private javax.swing.JRadioButton nam;
     private javax.swing.JRadioButton nu;
+    private javax.swing.JTable tableGV;
     private javax.swing.JTextField txthotengiaovien;
     private javax.swing.JTextField txtidgiaovien;
     private javax.swing.JTextField txtsearch;

@@ -23,9 +23,9 @@ public class HocSinhBLL {
         return false;
     }
     
-    public boolean DeleteHS(HocSinhDTO hocSinhDTO){
+    public boolean DeleteHS(String id){
         hocSinhDAL=new HocSinhDAL();
-        if (hocSinhDAL.DelHS(hocSinhDTO)==true) {
+        if (hocSinhDAL.DelHS(id)==true) {
             return true;
         }
         return false;
@@ -39,12 +39,4 @@ public class HocSinhBLL {
        return false;
    }
    //update neu khong thay doi hinh
-   public boolean  UpdateHS2(HocSinhDTO hocSinhDTO){
-       hocSinhDAL=new HocSinhDAL();
-       if (hocSinhDAL.ValueUpdate2(hocSinhDTO)==true) {
-           return true;
-       }
-       return false;
-   }
-    
 }
