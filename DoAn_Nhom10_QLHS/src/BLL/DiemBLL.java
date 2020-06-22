@@ -8,6 +8,7 @@ package BLL;
 import DAL.DiemDAL;
 import DTO.DiemDTO;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  *
@@ -15,6 +16,11 @@ import java.sql.SQLException;
  */
 public class DiemBLL {
     DiemDAL diemDAL;
+    
+    public ArrayList<DiemDTO> getListDiem(){
+        return new DiemDAL().getListDiem();
+    }
+    
     public boolean Add(DiemDTO diemDTO){
         diemDAL=new DiemDAL();
         if(diemDAL.ValueAddDiem(diemDTO)==true){

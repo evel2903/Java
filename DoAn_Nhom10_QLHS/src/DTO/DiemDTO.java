@@ -13,15 +13,15 @@ public class DiemDTO {
     public String idtablebangdiem;
     public String idtablehocsinh;
     public String idtablemonhoc;
-    public String idtablehocki;
-    public int diemtrungbinh;
+    public String idtablekhoahoc;
+    public float diemtrungbinh;
     
 
-    public DiemDTO(String idtablebangdiem, String idtablehocsinh, String idtablemonhoc, String idtablehocki, int diemtrungbinh) {
+    public DiemDTO(String idtablebangdiem, String idtablehocsinh, String idtablemonhoc, String idtablekhoahoc, float diemtrungbinh) {
         this.idtablebangdiem = idtablebangdiem;
         this.idtablehocsinh = idtablehocsinh;
         this.idtablemonhoc = idtablemonhoc;
-        this.idtablehocki = idtablehocki;
+        this.idtablekhoahoc = idtablekhoahoc;
         this.diemtrungbinh=diemtrungbinh;
     }
 
@@ -50,19 +50,19 @@ public class DiemDTO {
         this.idtablemonhoc = idtablemonhoc;
     }
 
-    public String getIdtablehocki() {
-        return idtablehocki;
+    public String getIdtablekhoahoc() {
+        return idtablekhoahoc;
     }
 
-    public void setIdtablehocki(String idtablehocki) {
-        this.idtablehocki = idtablehocki;
+    public void setIdtablekhoahoc(String idtablekhoahoc) {
+        this.idtablekhoahoc = idtablekhoahoc;
     }
     
-    public void setDiemtrungbinh(int diemtrungbinh){
+    public void setDiemtrungbinh(float diemtrungbinh){
         this.diemtrungbinh=diemtrungbinh;
     }
     
-    public int getDiemtrungbinh(){
+    public float getDiemtrungbinh(){
         return diemtrungbinh;
     }
     
