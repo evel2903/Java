@@ -22,6 +22,9 @@ public class GiaoVienDTO {
         this.gioitinh=gioitinh;
     
     }
+    public GiaoVienDTO(){
+    
+    }
 
     public String getIdtablegiaovien() {
         return idtablegiaovien;

@@ -9,12 +9,12 @@ package DTO;
  *
  * @author HP
  */
-public class monHocDTO {
+public class MonHocDTO {
     public String idtablemonhoc;
     public String tenmonhoc;
     public int sotiet;
     
-    public monHocDTO(String idtablemonhoc, String tenmonhoc, int sotiet){
+    public MonHocDTO(String idtablemonhoc, String tenmonhoc, int sotiet){
         this.idtablemonhoc=idtablemonhoc;
         this.tenmonhoc=tenmonhoc;
         this.sotiet=sotiet;

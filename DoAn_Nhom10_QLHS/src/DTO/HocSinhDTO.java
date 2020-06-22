@@ -27,6 +27,8 @@ public class HocSinhDTO {
         this.diachi = diachi;
         this.idtablelop = idtablelop;
     }
+    public HocSinhDTO() {
+    }
 
     public String getIdtablehocsinh() {
         return idtablehocsinh;

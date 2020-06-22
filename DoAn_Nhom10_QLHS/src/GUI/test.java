@@ -5,8 +5,8 @@
  */
 package GUI;
 
-import BLL.monHocBLL;
-import DTO.monHocDTO;
+import BLL.MonHocBLL;
+import DTO.MonHocDTO;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -87,8 +87,8 @@ public class test extends javax.swing.JFrame {
         String id=jTextField1.getText();
         String ten=jTextField2.getText();
         int sotiet=Integer.parseInt(jTextField3.getText());
-        monHocDTO monhocDTO=new monHocDTO(id, ten, sotiet);
-        monHocBLL monhocBLL=new monHocBLL();
+        MonHocDTO monhocDTO=new MonHocDTO(id, ten, sotiet);
+        MonHocBLL monhocBLL=new MonHocBLL();
        try {
             if(monhocBLL.AddMonhoc(monhocDTO)==true){
                 JOptionPane.showConfirmDialog(null, "thanh cong");

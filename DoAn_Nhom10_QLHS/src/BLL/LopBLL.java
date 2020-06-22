@@ -7,38 +7,27 @@ package BLL;
 
 import DAL.LopDAL;
 import DTO.LopDTO;
+import java.util.ArrayList;
 
 /**
  *
  * @author HP
  */
 public class LopBLL {
-    LopDAL lopDAL;
-    
-    //thêm mới lóp
-    public boolean AddLop(LopDTO lopDTO){
-        lopDAL=new LopDAL();
-        if(lopDAL.ValuesAddLop(lopDTO)==true){
-            return true;
-        }
-        return false;
+    public ArrayList<LopDTO> getAllClassroom(){
+        return new LopDAL().getAllClassroom();
+    }
+
+    public boolean createClassroom(LopDTO lopDTO){
+        return new LopDAL().createClassroom(lopDTO);
     }
     
-    //xóa môn học
-    public boolean DeleteLop(LopDTO lopDTO){
-        lopDAL=new LopDAL();
-        if(lopDAL.ValuesDelete(lopDTO)==true){
-            return true;
-        }
-        return false;
+
+    public boolean updateClassroom(LopDTO lopDTO){
+        return new LopDAL().updateClassroom(lopDTO);
     }
     
-    //cập nhật môn học
-    public boolean Update(LopDTO lopDTO){
-        lopDAL=new LopDAL();
-        if (lopDAL.ValueUpdateLop(lopDTO)==true) {
-            return true;
-        }
-        return false;
+    public boolean deleteClassroom(String id){
+        return new LopDAL().deleteClassroom(id);
     }
 }

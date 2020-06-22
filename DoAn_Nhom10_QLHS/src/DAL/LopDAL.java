@@ -9,7 +9,12 @@ import DTO.LopDTO;
 import UTILS.ConnectionUtil;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -18,127 +23,86 @@ import javax.swing.JOptionPane;
  */
 public class LopDAL {
 
-    private ConnectionUtil conUtil;
-    private Connection con;
-    PreparedStatement preparedStatement;
-    LopDTO lopDTO;
-
-    // thêm mới lóp học
-    public boolean ValuesAddLop(LopDTO lopDTO) {
-        int check = 0;
-        String sql = "INSERT INTO `doan`.`tablelop` (`idtablelop`, `tenlop`, `siso`, `idtablegiaovien`, `idtablekhoahoc` ) " + "VALUES (?, ?, ?, ?, ?);";
-
+    public ArrayList<LopDTO> getAllClassroom(){
+        ArrayList<LopDTO> listStudent = new ArrayList<>();
+        String sql = "SELECT * FROM `tablelop`";
+        Connection con = new ConnectionUtil().getConnection();
+        Statement st;
+        ResultSet rs;
         try {
-            conUtil = new ConnectionUtil();
-            con = conUtil.getConnection();
-
-            preparedStatement = con.prepareStatement(sql);
+            st = con.createStatement();
+            rs = st.executeQuery(sql);
+            while (rs.next()) {
+                listStudent.add(new LopDTO(
+                            rs.getString("idtablelop"),
+                            rs.getString("tenlop"),
+                            rs.getInt("siso"),
+                            rs.getString("idtablegiaovien"),
+                            rs.getString("idtablekhoahoc")
+                ));
+                
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(GiaoVienDAL.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return listStudent;
+    }
+    // thêm mới lóp học
+    public boolean createClassroom(LopDTO lopDTO) {
+        Connection con = new ConnectionUtil().getConnection();
+        String sql = "INSERT INTO `doan`.`tablelop` (`idtablelop`, `tenlop`, `siso`, `idtablegiaovien`, `idtablekhoahoc` ) " + "VALUES (?, ?, ?, ?, ?);";
+        try {
+            PreparedStatement preparedStatement = con.prepareStatement(sql);
+            
             preparedStatement.setString(1, lopDTO.getIdtablelop());
             preparedStatement.setString(2, lopDTO.getTenlop());
             preparedStatement.setInt(3, lopDTO.getSiso());
             preparedStatement.setString(4, lopDTO.getIdtablegiaovien());
             preparedStatement.setString(5, lopDTO.getIdtablekhoahoc());
 
-            check = preparedStatement.executeUpdate();
+            return  preparedStatement.executeUpdate()>0;
 
-        } catch (SQLException e) {
-            JOptionPane.showConfirmDialog(null, "lỗi kết nối lóp học");
-        } finally {
-            try {
-                con.close();
-                preparedStatement.close();
-
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-
-        if (check != 0) {
-            return true;
-        } else {
-            return false;
-        }
+        } catch (SQLException ex) {
+            Logger.getLogger(LopDAL.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+        return false;
     }
     
     //xóa lớp học
-    public boolean ValuesDelete(LopDTO lopDTO) {
-        int check = 0;
-        String sqldel = "DELETE FROM `doan`.`tablelop` WHERE (`idtablelop` = ?);";
+    public boolean deleteClassroom(String id) {
+        String sql = "DELETE FROM `doan`.`tablelop` WHERE (`idtablelop` = ?);";
+        Connection con = new ConnectionUtil().getConnection();
         try {
-            conUtil = new ConnectionUtil();
-            con = conUtil.getConnection();
-
-            preparedStatement = con.prepareStatement(sqldel);
-            preparedStatement.setString(1, lopDTO.getIdtablelop());
+            PreparedStatement preparedStatement = con.prepareStatement(sql);
+            preparedStatement.setString(1, id);
             
-            check = preparedStatement.executeUpdate();
-        } catch (Exception e) {
-            JOptionPane.showConfirmDialog(null, "lỗi kết nối xóa môn học");
-        }
-        if (check != 0) {
-            return true;
-        } else {
-            return false;
-        }
-
+            return  preparedStatement.executeUpdate() > 0;
+        } catch (SQLException ex) {
+            Logger.getLogger(LopDAL.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+        return false;
     }
     
     //cập nhật lớp học
-    public boolean ValueUpdateLop(LopDTO lopDTO) {
-        int check = 0;
-        String sqlupdate = "UPDATE `doan`.`tablelop` SET `tenlop` = ?, `siso` = ?, `idtablegiaovien` = ?, `idtablekhoahoc` = ? WHERE (`idtablelop` = ?);";
+    public boolean updateClassroom(LopDTO lopDTO) {
+        String sql = "UPDATE `doan`.`tablelop` SET `tenlop` = ?, `siso` = ?, `idtablegiaovien` = ?, `idtablekhoahoc` = ? WHERE (`idtablelop` = ?);";
+        Connection con = new ConnectionUtil().getConnection();
         try {
-            conUtil = new ConnectionUtil();
-            con = conUtil.getConnection();
-
-            preparedStatement = con.prepareStatement(sqlupdate);
+            PreparedStatement preparedStatement = con.prepareStatement(sql);
             preparedStatement.setString(1, lopDTO.getTenlop());
             preparedStatement.setInt(2, lopDTO.getSiso());
             preparedStatement.setString(3, lopDTO.getIdtablegiaovien());
             preparedStatement.setString(4, lopDTO.getIdtablekhoahoc());
             preparedStatement.setString(5, lopDTO.idtablelop);
             
-            check = preparedStatement.executeUpdate();
-        } catch (Exception e) {
-            JOptionPane.showConfirmDialog(null, "lỗi kết nối sửa môn học");
-        } finally {
-            try {
-                con.close();
-                preparedStatement.close();
-
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-        if (check != 0) {
-            return true;
-        } else {
-            return false;
-        }
+            return preparedStatement.executeUpdate() > 0;
+        } catch (SQLException ex) {
+            Logger.getLogger(LopDAL.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+        return false;
         
     }
     
-    //xóa lớp học
-    public boolean ValuesDeleteLop(LopDTO lopDTO) {
-        int check = 0;
-        String sqldel = "DELETE FROM `doan`.`tablemonhoc` WHERE (`idtablemonhoc` = ?);";
-        try {
-            conUtil = new ConnectionUtil();
-            con = conUtil.getConnection();
-
-            preparedStatement = con.prepareStatement(sqldel);
-            preparedStatement.setString(1, lopDTO.getIdtablelop());
-            check = preparedStatement.executeUpdate();
-        } catch (Exception e) {
-            JOptionPane.showConfirmDialog(null, "lỗi xóa môn học");
-        }
-        if (check != 0) {
-            return true;
-        } else {
-            return false;
-        }
-
-    }
-
 
 }

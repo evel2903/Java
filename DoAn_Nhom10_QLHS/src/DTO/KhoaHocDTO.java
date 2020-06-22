@@ -9,9 +9,9 @@ package DTO;
  *
  * @author HP
  */
-public class khoaHocDTO {
+public class KhoaHocDTO {
     String idtablehoahoc;
-    public khoaHocDTO(String idtablekhoahoc){
+    public KhoaHocDTO(String idtablekhoahoc){
         this.idtablehoahoc=idtablekhoahoc;
     }
     public String getIdKhoahoc(){

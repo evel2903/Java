@@ -7,48 +7,24 @@ package BLL;
 
 import DAL.GiaoVienDAL;
 import DTO.GiaoVienDTO;
+import java.util.ArrayList;
 
 /**
  *
  * @author HP
  */
 public class GiaoVienBLL {
-    GiaoVienDAL giaoVienDAL;
-    public boolean AddGiaoVien(GiaoVienDTO giaoVienDTO){
-        giaoVienDAL=new GiaoVienDAL();
-        if (giaoVienDAL.ValuesAddGiaovien(giaoVienDTO)==true) {
-            return true;
-        }
-        return false;
-    }
-    //xóa
-    public boolean DeleteGiaoVien(GiaoVienDTO giaoVienDTO){
-        giaoVienDAL=new GiaoVienDAL();
-        if (giaoVienDAL.ValuesDeleteGiaovien(giaoVienDTO)==true) {
-            return true;
-        }
-        return false;
+    public ArrayList<GiaoVienDTO> getAllTeacher(){
+        return new GiaoVienDAL().getAllTeacher();
     }
     
-    public boolean UpdateGiaoVien(GiaoVienDTO giaoVienDTO){
-        giaoVienDAL=new GiaoVienDAL();
-        if (giaoVienDAL.ValuesUpdateGiaovien(giaoVienDTO)==true) {
-            return true;
-        }
-        return false;
-    }
-    
-    //update giao vien neu khong thay doi hinh anh
-    public boolean UpdateGiaoVien2(GiaoVienDTO giaoVienDTO){
-        giaoVienDAL=new GiaoVienDAL();
-        if (giaoVienDAL.ValuesUpdateGiaovien2(giaoVienDTO)==true) {
-            return true;
-        }
-        return false;
-    }
-    
-    public boolean DEL(GiaoVienDTO giaoVienDTO){
-        giaoVienDAL=new GiaoVienDAL();
-        return giaoVienDAL.DGV(giaoVienDTO)==true;
+    public boolean createTeacher(GiaoVienDTO giaoVienDTO){   
+        return new GiaoVienDAL().createTeacher(giaoVienDTO);
+    }  
+    public boolean updateTeacher(GiaoVienDTO giaoVienDTO){   
+        return new GiaoVienDAL().updateTeacher(giaoVienDTO);
+    }  
+    public boolean deleteTeacher(String id){
+        return new GiaoVienDAL().deleteTeacher(id);
     }
 }

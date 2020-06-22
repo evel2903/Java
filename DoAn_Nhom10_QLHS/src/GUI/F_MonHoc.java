@@ -5,9 +5,9 @@
  */
 package GUI;
 
-import BLL.monHocBLL;
-import DAL.monHocDAL;
-import DTO.monHocDTO;
+import BLL.MonHocBLL;
+import DAL.MonHocDAL;
+import DTO.MonHocDTO;
 import UTILS.ConnectionUtil;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -31,9 +31,9 @@ public class F_MonHoc extends javax.swing.JFrame {
      * Creates new form F_MonHoc
      */
     //lấy danh sách
-    public ArrayList<monHocDTO> getListMonhoc() {
+    public ArrayList<MonHocDTO> getListMonhoc() {
 
-        ArrayList<monHocDTO> list = new ArrayList<monHocDTO>();
+        ArrayList<MonHocDTO> list = new ArrayList<MonHocDTO>();
         String sql = "SELECT * FROM doan.tablemonhoc";
         Statement st;
         ResultSet rs;
@@ -43,10 +43,10 @@ public class F_MonHoc extends javax.swing.JFrame {
             Connection con = conUtil.getConnection();
             st = con.createStatement();
             rs = st.executeQuery(sql);
-            monHocDTO monhocDTO;
+            MonHocDTO monhocDTO;
 
             while (rs.next()) {
-                monhocDTO = new monHocDTO(rs.getString("idtablemonhoc"), rs.getString("tenmonhoc"), rs.getInt("sotiet"));
+                monhocDTO = new MonHocDTO(rs.getString("idtablemonhoc"), rs.getString("tenmonhoc"), rs.getInt("sotiet"));
                 list.add(monhocDTO);
             }
         } catch (Exception e) {
@@ -64,7 +64,7 @@ public class F_MonHoc extends javax.swing.JFrame {
     public void showdatatintable() {
         //ArrayList<monHocDTO> list = new ArrayList<monHocDTO>();
         //list = monhocDAL.getListMonhoc();
-        ArrayList<monHocDTO> list = getListMonhoc();
+        ArrayList<MonHocDTO> list = getListMonhoc();
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         Object[] row = new Object[4];
         for (int i = 0; i < list.size(); i++) {
@@ -250,8 +250,8 @@ public class F_MonHoc extends javax.swing.JFrame {
         String id = txtmamonhoc.getText();
         String ten = txttenmonhoc.getText();
         int sotiet = Integer.parseInt(txtsotiet.getText());
-        monHocDTO monhocDTO = new monHocDTO(id, ten, sotiet);
-        monHocBLL monhocBLL = new monHocBLL();
+        MonHocDTO monhocDTO = new MonHocDTO(id, ten, sotiet);
+        MonHocBLL monhocBLL = new MonHocBLL();
         try {
             if (monhocBLL.AddMonhoc(monhocDTO) == true) {
                 DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
@@ -275,8 +275,8 @@ public class F_MonHoc extends javax.swing.JFrame {
         String id = txtmamonhoc.getText();
         String ten = txttenmonhoc.getText();
         int sotiet = Integer.parseInt(txtsotiet.getText());
-        monHocDTO monhocDTO = new monHocDTO(id, ten, sotiet);
-        monHocBLL monhocBLL = new monHocBLL();
+        MonHocDTO monhocDTO = new MonHocDTO(id, ten, sotiet);
+        MonHocBLL monhocBLL = new MonHocBLL();
         try {
             if (monhocBLL.UpdateMonhoc(monhocDTO) == true) {
                 DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
@@ -295,8 +295,8 @@ public class F_MonHoc extends javax.swing.JFrame {
     private void bttxoamonhocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttxoamonhocActionPerformed
         // TODO add your handling code here:
         String id = txtmamonhoc.getText();
-        monHocBLL monhocBLL = new monHocBLL();
-        monHocDTO monhocDTO = new monHocDTO(id, null, 0);
+        MonHocBLL monhocBLL = new MonHocBLL();
+        MonHocDTO monhocDTO = new MonHocDTO(id, null, 0);
         try {
             if (monhocBLL.DeleteMonhoc(monhocDTO) == true) {
                 DefaultTableModel model = (DefaultTableModel) jTable1.getModel();

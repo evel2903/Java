@@ -8,35 +8,25 @@ package BLL;
 import DAL.HocSinhDAL;
 import DTO.HocSinhDTO;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  *
  * @author HP
  */
 public class HocSinhBLL {
-    HocSinhDAL hocSinhDAL;
-    public boolean AddHS(HocSinhDTO hocSinhDTO){
-        hocSinhDAL=new HocSinhDAL();
-        if (hocSinhDAL.ValuesAddHS(hocSinhDTO)==true) {
-            return true;
-        }
-        return false;
+   public ArrayList<HocSinhDTO> getAllStudent(){
+       return new HocSinhDAL().getAllStudent();
     }
     
-    public boolean DeleteHS(String id){
-        hocSinhDAL=new HocSinhDAL();
-        if (hocSinhDAL.DelHS(id)==true) {
-            return true;
-        }
-        return false;
+    public boolean createStudent(HocSinhDTO hocSinhDTO){   
+        return new HocSinhDAL().createStudent(hocSinhDTO);
+    }  
+    public boolean updateStudent(HocSinhDTO hocSinhDTO){   
+        return new HocSinhDAL().updateStudent(hocSinhDTO);
+    }  
+    public boolean deleteStudent(String id){
+        return new HocSinhDAL().deleteStudent(id);
     }
     
-   public boolean  UpdateHS(HocSinhDTO hocSinhDTO){
-       hocSinhDAL=new HocSinhDAL();
-       if (hocSinhDAL.ValueUpdate(hocSinhDTO)==true) {
-           return true;
-       }
-       return false;
-   }
-   //update neu khong thay doi hinh
 }

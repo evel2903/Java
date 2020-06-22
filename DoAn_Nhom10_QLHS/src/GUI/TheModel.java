@@ -28,13 +28,7 @@ public class TheModel extends AbstractTableModel {
         this.columns = columnName;
     }
     public Class getColumnClass(int column){
-// 4 is the index of the column image
-        if((column == 4)){
-            return Icon.class;
-        }
-        else{
-            return getValueAt(0,column).getClass();
-        }
+        return getValueAt(0,column).getClass();
     }
     public int getRowCount() {
      return this.rows.length;

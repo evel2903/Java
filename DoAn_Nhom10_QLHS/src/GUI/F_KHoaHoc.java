@@ -5,8 +5,8 @@
  */
 package GUI;
 
-import BLL.khoaHocBLL;
-import DTO.khoaHocDTO;
+import BLL.KhoaHocBLL;
+import DTO.KhoaHocDTO;
 import UTILS.ConnectionUtil;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -28,9 +28,9 @@ public class F_KHoaHoc extends javax.swing.JFrame {
      * Creates new form F_KHoaHoc
      */
     //lấy danh sách
-    public ArrayList<khoaHocDTO> getListKhoahoc(){
+    public ArrayList<KhoaHocDTO> getListKhoahoc(){
         
-        ArrayList<khoaHocDTO> list =new ArrayList<khoaHocDTO>();
+        ArrayList<KhoaHocDTO> list =new ArrayList<KhoaHocDTO>();
         String sql="SELECT * FROM doan.tablekhoahoc";
         Statement st;
         ResultSet rs;
@@ -40,10 +40,10 @@ public class F_KHoaHoc extends javax.swing.JFrame {
             Connection con = conUtil.getConnection();
             st = con.createStatement();
             rs = st.executeQuery(sql);
-            khoaHocDTO khoahocDTO;
+            KhoaHocDTO khoahocDTO;
 
             while (rs.next()) {
-                khoahocDTO = new khoaHocDTO(rs.getString("idtablekhoahoc"));
+                khoahocDTO = new KhoaHocDTO(rs.getString("idtablekhoahoc"));
                 list.add(khoahocDTO);
             }
         } catch (Exception e) {
@@ -61,7 +61,7 @@ public class F_KHoaHoc extends javax.swing.JFrame {
     
     
     public void showdataintable(){
-        ArrayList<khoaHocDTO> list = getListKhoahoc();
+        ArrayList<KhoaHocDTO> list = getListKhoahoc();
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         Object[] row = new Object[4];
         for (int i = 0; i < list.size(); i++) {
@@ -185,8 +185,8 @@ public class F_KHoaHoc extends javax.swing.JFrame {
     private void btnthemkhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnthemkhActionPerformed
         // TODO add your handling code here:
         String id=txtidkhoahoc.getText();
-        khoaHocDTO khoahocDTO=new khoaHocDTO(id);
-        khoaHocBLL khoahocBLL=new khoaHocBLL();
+        KhoaHocDTO khoahocDTO=new KhoaHocDTO(id);
+        KhoaHocBLL khoahocBLL=new KhoaHocBLL();
         try {
             if(khoahocBLL.AddKhoahoc(khoahocDTO)==true){
                 DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
@@ -204,8 +204,8 @@ public class F_KHoaHoc extends javax.swing.JFrame {
     private void btnxoakhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnxoakhActionPerformed
         // TODO add your handling code here:
         String id=txtidkhoahoc.getText();
-        khoaHocDTO khoahocDTO=new khoaHocDTO(id);
-        khoaHocBLL khoahocBLL=new khoaHocBLL();
+        KhoaHocDTO khoahocDTO=new KhoaHocDTO(id);
+        KhoaHocBLL khoahocBLL=new KhoaHocBLL();
         
         try {
             if (khoahocBLL.DeleteKhoahoc(khoahocDTO)==true) {
