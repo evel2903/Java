@@ -8,6 +8,7 @@ package UTILS;
 import DTO.GiaoVienDTO;
 import DTO.HocSinhDTO;
 import DTO.LopDTO;
+import DTO.ThongKeDTO;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -221,6 +222,67 @@ public class ExportExcel {
         try {
             
             outputStream = new FileOutputStream("LopHoc.xlsx");
+            workbook.write(outputStream);
+            workbook.close();
+            return true;
+            
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(ExportExcel.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(ExportExcel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+    
+    public boolean exportTK(ArrayList<ThongKeDTO> list, String path){
+        XSSFWorkbook workbook = new XSSFWorkbook();
+        XSSFSheet sheet = workbook.createSheet("ThongKe");
+        
+        CellStyle cellStyle = sheet.getWorkbook().createCellStyle();
+        Font font = sheet.getWorkbook().createFont();
+        font.setBold(true);
+        cellStyle.setFont(font);
+        
+        int rowNum = 0;
+        //Setting Header
+        Row firstRow = sheet.createRow(rowNum++);
+        Cell firstCell0 = firstRow.createCell(0);
+        Cell firstCell1 = firstRow.createCell(1);
+        Cell firstCell2 = firstRow.createCell(2);
+        Cell firstCell3 = firstRow.createCell(3);
+        
+        //Setting style
+        firstCell0.setCellStyle(cellStyle);
+        firstCell1.setCellStyle(cellStyle);
+        firstCell2.setCellStyle(cellStyle);
+        firstCell3.setCellStyle(cellStyle);
+        
+        //Setting value
+        firstCell0.setCellValue("ID");
+        firstCell1.setCellValue("Họ Tên");
+        firstCell2.setCellValue("ID Lớp học");
+        firstCell3.setCellValue("Điểm tổng kết");
+        
+        for (ThongKeDTO thongKeDTO : list) {
+            Row row = sheet.createRow(rowNum++);
+            
+            Cell cell0 = row.createCell(0);
+            cell0.setCellValue(thongKeDTO.getId());
+            
+            Cell cell1 = row.createCell(1);
+            cell1.setCellValue(thongKeDTO.getFullName());
+            
+            Cell cell2 = row.createCell(2);
+            cell2.setCellValue(thongKeDTO.getIdClass());
+            
+            Cell cell3 = row.createCell(3);
+            cell3.setCellValue(thongKeDTO.getAvgAll());
+            
+        }
+        FileOutputStream outputStream;
+        try {
+            
+            outputStream = new FileOutputStream(path);
             workbook.write(outputStream);
             workbook.close();
             return true;
